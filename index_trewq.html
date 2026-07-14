@@ -1,0 +1,2785 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<title>TCF Canada</title>
+<meta name="theme-color" content="#0D0B14">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="TCF Canada">
+<style>
+
+:root{
+  --bg:#060914;
+  --surface:rgba(10,12,30,0.88);
+  --surface2:rgba(20,18,50,0.92);
+  --border:rgba(120,80,255,0.28);
+  --border2:rgba(120,80,255,0.55);
+  --accent:#A259FF;
+  --accent2:#FF6AC1;
+  --accent3:#00F0C0;
+  --accent4:#4FC3F7;
+  --text:#EEE8FF;
+  --muted:#9990BB;
+  --muted2:#3A3460;
+  --fr-bg:rgba(80,30,180,0.18);
+  --fr-border:rgba(140,80,255,0.45);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+
+
+.task-info-bar{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:6px 16px;background:rgba(162,89,255,0.10);
+  border-bottom:1px solid rgba(162,89,255,0.2);
+  font-size:11.5px;color:var(--muted);gap:8px;flex-wrap:wrap;
+}
+.task-register{opacity:0.85;}
+.task-timing{color:var(--accent3);font-weight:600;white-space:nowrap;}
+/* space bg */
+#sbg{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 80% 55% at 15% 8%,rgba(90,0,200,0.5) 0%,transparent 70%),
+    radial-gradient(ellipse 55% 45% at 82% 78%,rgba(0,70,210,0.38) 0%,transparent 65%),
+    radial-gradient(ellipse 38% 38% at 58% 28%,rgba(200,0,130,0.22) 0%,transparent 60%),
+    radial-gradient(ellipse 28% 28% at 8% 68%,rgba(0,190,210,0.16) 0%,transparent 60%),
+    #060914}
+#sbg::before{content:'';position:absolute;inset:0;background-image:
+    radial-gradient(1px 1px at 8% 6%,#fff 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 18% 14%,rgba(255,255,255,.8) 0%,transparent 100%),
+    radial-gradient(1px 1px at 30% 4%,#fff 0%,transparent 100%),
+    radial-gradient(2px 2px at 45% 9%,rgba(200,180,255,.9) 0%,transparent 100%),
+    radial-gradient(1px 1px at 62% 3%,#fff 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 75% 18%,rgba(255,255,255,.7) 0%,transparent 100%),
+    radial-gradient(1px 1px at 88% 7%,#fff 0%,transparent 100%),
+    radial-gradient(1px 1px at 4% 30%,rgba(255,255,255,.6) 0%,transparent 100%),
+    radial-gradient(2px 2px at 22% 38%,rgba(160,200,255,.8) 0%,transparent 100%),
+    radial-gradient(1px 1px at 38% 45%,#fff 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 54% 32%,rgba(255,200,255,.7) 0%,transparent 100%),
+    radial-gradient(1px 1px at 70% 50%,#fff 0%,transparent 100%),
+    radial-gradient(1px 1px at 85% 38%,rgba(255,255,255,.5) 0%,transparent 100%),
+    radial-gradient(2px 2px at 12% 62%,rgba(200,230,255,.8) 0%,transparent 100%),
+    radial-gradient(1px 1px at 28% 72%,#fff 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 48% 58%,rgba(255,255,255,.6) 0%,transparent 100%),
+    radial-gradient(1px 1px at 65% 68%,#fff 0%,transparent 100%),
+    radial-gradient(1px 1px at 80% 62%,rgba(180,160,255,.9) 0%,transparent 100%),
+    radial-gradient(2px 2px at 92% 55%,rgba(255,255,255,.4) 0%,transparent 100%),
+    radial-gradient(1px 1px at 6% 85%,rgba(200,255,255,.5) 0%,transparent 100%),
+    radial-gradient(1px 1px at 36% 88%,rgba(255,255,255,.7) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 58% 82%,rgba(255,220,255,.6) 0%,transparent 100%),
+    radial-gradient(1px 1px at 78% 90%,rgba(255,255,255,.5) 0%,transparent 100%),
+    radial-gradient(2px 2px at 94% 80%,rgba(200,200,255,.7) 0%,transparent 100%)}
+#sbg::after{content:'';position:absolute;width:240px;height:240px;border-radius:50%;right:-55px;bottom:-55px;
+  background:radial-gradient(circle at 38% 38%,rgba(110,40,230,0.92) 0%,rgba(60,0,170,0.88) 28%,rgba(190,0,110,0.5) 58%,transparent 78%);
+  box-shadow:inset -18px -18px 36px rgba(0,0,0,0.6),0 0 55px rgba(140,40,255,0.3)}
+
+.app{position:relative;z-index:1;max-width:660px;margin:0 auto;display:flex;flex-direction:column;min-height:100vh;
+  background:var(--surface);border-left:1px solid var(--border);border-right:1px solid var(--border);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+
+/* top bar */
+.topbar{padding:14px 16px 10px;border-bottom:1px solid var(--border);flex-shrink:0}
+.t1{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;margin-bottom:2px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent4));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.t2{font-size:11px;color:var(--muted)}
+
+/* voice panel */
+.vpanel{padding:11px 16px 10px;border-bottom:1px solid var(--border);flex-shrink:0;background:rgba(20,10,50,0.55)}
+
+/* voice picker + per-voice sliders side by side */
+.vvoice-row{display:flex;gap:10px;margin-bottom:10px;align-items:stretch}
+.vvoice-col{display:flex;flex-direction:column;gap:6px;flex:0 0 auto;justify-content:space-around}
+.vvoice-item{display:flex;flex-direction:column;gap:3px}
+.vf-label{font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+.vf-sel{font-size:12px}
+.vslider-col{flex:1;display:flex;flex-direction:column;gap:8px;justify-content:space-around}
+.vslider-item{display:flex;align-items:center;gap:8px}
+.vslider-lbl{font-size:10px;font-weight:800;letter-spacing:.1em;color:var(--accent);text-transform:uppercase;min-width:20px}
+.vslider-track-h{flex:1;position:relative}
+.vslider-pct{font-size:10px;color:var(--muted);min-width:32px;text-align:right}
+
+/* ALL bar — full width */
+.vall-row{display:flex;align-items:center;gap:8px;padding-top:4px;border-top:1px solid var(--border)}
+.vall-lbl{font-size:10px;font-weight:800;letter-spacing:.08em;color:var(--accent2);text-transform:uppercase;white-space:nowrap;min-width:46px}
+.vall-track{flex:1}
+
+/* shared slider style */
+.vslider-h{width:100%;-webkit-appearance:none;appearance:none;height:4px;border-radius:2px;background:var(--muted2);outline:none;cursor:pointer;display:block}
+.vslider-h::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--accent);cursor:pointer;box-shadow:0 0 8px var(--accent)}
+.vslider-h::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--accent);border:none;cursor:pointer;box-shadow:0 0 8px var(--accent)}
+.vall-input::-webkit-slider-thumb{background:var(--accent2);box-shadow:0 0 8px var(--accent2)}
+.vall-input::-moz-range-thumb{background:var(--accent2);box-shadow:0 0 8px var(--accent2)}
+
+.vstatus{font-size:11px;color:var(--muted);margin-top:6px}
+.vwarn{font-size:11px;color:#FFD600;margin-top:5px;line-height:1.5;display:none}
+
+/* selectors */
+.selrow{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:9px 16px;border-bottom:1px solid var(--border);flex-shrink:0}
+.lbl{font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;margin-bottom:3px}
+.setrow{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:8px;align-items:end;padding:8px 16px 9px;border-bottom:1px solid var(--border);flex-shrink:0}
+.sett{display:flex;flex-direction:column;gap:3px}
+select{width:100%;padding:7px 26px 7px 10px;border:1px solid var(--border);border-radius:7px;
+  background:rgba(18,14,48,0.92);color:var(--text);font-size:13px;cursor:pointer;
+  -webkit-appearance:none;appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='%239990BB' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 8px center}
+select:focus{outline:none;border-color:var(--accent)}
+select option{background:#14103a}
+
+/* lang switch */
+.lswitch{display:inline-flex;align-items:center;justify-content:center;gap:4px;padding:7px 11px;
+  border:1px solid var(--accent2);border-radius:7px;background:rgba(255,106,193,0.1);color:var(--accent2);
+  font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;height:36px;
+  transition:background .12s,transform .08s;-webkit-user-select:none;user-select:none}
+.lswitch:hover{background:rgba(255,106,193,0.2)}
+.lswitch:active{transform:scale(0.95)}
+
+/* step meta */
+.smeta{padding:10px 16px 0;flex-shrink:0}
+.sname{font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;margin-bottom:5px}
+.badges{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.c1b{font-size:10px;font-weight:800;letter-spacing:.08em;background:var(--accent);color:#08031a;padding:3px 10px;border-radius:20px;display:none;box-shadow:0 0 10px rgba(162,89,255,0.5)}
+.repb{font-size:10px;font-weight:800;background:var(--accent2);color:#1a0010;padding:3px 10px;border-radius:20px;display:none}
+.tipbox{font-size:12px;color:var(--muted);font-style:italic;line-height:1.55;padding:7px 16px 0;flex-shrink:0}
+
+/* sentences — FIXED HEIGHT */
+.sarea{padding:10px 16px 0;flex-shrink:0}
+.sfr{font-size:15px;font-weight:500;line-height:1.7;color:var(--text);
+  background:var(--fr-bg);border:1px solid var(--fr-border);border-radius:10px;
+  padding:12px 14px;height:118px;overflow-y:auto;margin-bottom:7px;
+  scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+.sfr::-webkit-scrollbar{width:3px}
+.sfr::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.sen{font-size:12px;line-height:1.6;color:var(--muted);height:58px;overflow-y:auto;
+  padding:4px 14px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;
+  scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+.sen::-webkit-scrollbar{width:3px}
+.sen::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+
+/* progress */
+.prow{display:flex;align-items:center;justify-content:space-between;padding:8px 16px 5px;flex-shrink:0}
+.dots{display:flex;gap:5px;flex-wrap:wrap;max-width:280px}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--muted2);cursor:pointer;transition:background .15s,transform .1s;flex-shrink:0}
+.dot:hover{transform:scale(1.35)}
+.dot.heard{background:var(--accent3)}
+.dot.cur{background:var(--accent);box-shadow:0 0 6px var(--accent)}
+.dot.cur.heard{background:var(--accent2);box-shadow:0 0 6px var(--accent2)}
+.pnum{font-size:11px;color:var(--muted)}
+
+/* controls — FIXED, STURDY */
+.ctrls{flex-shrink:0;padding:9px 16px 14px;border-top:1px solid var(--border);
+  background:rgba(8,6,26,0.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.crow1{display:flex;gap:8px;margin-bottom:9px;overflow-x:auto}
+.crow2{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.nc{font-size:11px;color:var(--muted);text-align:center;white-space:nowrap;flex-shrink:0}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 16px;border-radius:9px;
+  font-size:13px;font-weight:600;cursor:pointer;border:1px solid var(--border2);
+  background:rgba(80,40,160,0.22);color:var(--text);
+  transition:background .1s,transform .08s,box-shadow .1s;
+  user-select:none;-webkit-user-select:none;white-space:nowrap;flex-shrink:0}
+.btn:hover{background:rgba(120,60,220,0.32);border-color:var(--accent)}
+.btn:active{transform:scale(0.96)}
+.btn.nb{padding:9px 16px;min-width:80px;justify-content:center}
+
+/* play button states */
+.btn.play-idle{background:linear-gradient(135deg,rgba(162,89,255,0.88),rgba(90,30,190,0.88));border-color:var(--accent);font-weight:800;box-shadow:0 0 16px rgba(162,89,255,0.38)}
+.btn.play-playing{background:linear-gradient(135deg,rgba(255,200,0,0.2),rgba(180,120,0,0.2));border-color:#FFD600;color:#FFD600;font-weight:800}
+.btn.play-paused{background:linear-gradient(135deg,rgba(0,240,192,0.18),rgba(0,150,120,0.18));border-color:var(--accent3);color:var(--accent3);font-weight:800;box-shadow:0 0 14px rgba(0,240,192,0.25)}
+.btn.auto-on{background:linear-gradient(135deg,rgba(255,106,193,0.88),rgba(180,20,110,0.88));border-color:var(--accent2);font-weight:800;box-shadow:0 0 16px rgba(255,106,193,0.38)}
+
+svg.ic{width:14px;height:14px;vertical-align:-1px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+/* ── PWA install banner ── */
+.install-banner{
+  display:none;
+  align-items:center;gap:10px;
+  padding:9px 16px;
+  background:linear-gradient(135deg,rgba(162,89,255,0.2),rgba(255,106,193,0.15));
+  border-bottom:1px solid var(--border2);
+  flex-shrink:0;
+}
+.install-banner.show{display:flex}
+.install-txt{font-size:12px;color:var(--text);flex:1;line-height:1.4}
+.install-txt strong{color:var(--accent);font-weight:700}
+.install-btn{font-size:12px;font-weight:700;padding:6px 14px;border-radius:7px;
+  background:var(--accent);color:#08031a;border:none;cursor:pointer;white-space:nowrap;flex-shrink:0}
+.install-close{font-size:16px;color:var(--muted);background:none;border:none;cursor:pointer;padding:0 4px;flex-shrink:0}
+
+
+#home-screen{position:relative;z-index:1;padding-bottom:48px}
+#player-screen{display:none;position:relative;z-index:1}
+.hdr{padding:18px 16px 14px;background:rgba(6,9,20,0.82);border-bottom:1px solid rgba(120,80,255,0.25);backdrop-filter:blur(10px);position:sticky;top:0;z-index:20}
+.hdr-title{font-size:19px;font-weight:700;color:var(--text)}
+.hdr-sub{font-size:11.5px;color:var(--muted);margin-top:2px}
+.grand-row{display:flex;align-items:center;gap:10px;margin-top:11px;padding:9px 12px;background:rgba(162,89,255,0.10);border:1px solid var(--border);border-radius:10px}
+.grand-n{font-size:26px;font-weight:800;color:var(--accent);min-width:46px;line-height:1}
+.grand-r{flex:1}
+.grand-lbl{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-bottom:4px}
+.grand-bar{height:6px;background:var(--muted2);border-radius:3px;overflow:hidden}
+.grand-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:3px;transition:width .5s}
+.sec-lbl{font-size:10.5px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--muted);padding:12px 16px 5px}
+.tgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:4px 12px 8px}
+.tcard{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:13px 12px;cursor:pointer;position:relative;overflow:hidden;-webkit-user-select:none;user-select:none;transition:transform .1s,background .15s}
+.tcard:active{transform:scale(0.96);background:var(--surface2)}
+.tcard-stripe{position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0}
+.tcard-short{font-size:10px;font-weight:700;letter-spacing:1.2px;color:var(--muted);margin-bottom:3px}
+.tcard-label{font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:1px}
+.tcard-desc{font-size:10px;color:var(--muted);margin-bottom:7px;line-height:1.35}
+.tcard-badges{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:8px}
+.tbadge{font-size:9px;padding:2px 6px;border-radius:20px;background:rgba(255,255,255,0.06);color:var(--muted);border:1px solid rgba(255,255,255,0.09)}
+.tcard-bar{height:3.5px;background:var(--muted2);border-radius:2px;overflow:hidden;margin-bottom:3px}
+.tcard-bar-fill{height:100%;border-radius:2px;transition:width .4s}
+.tcard-bar-lbl{display:flex;justify-content:space-between;font-size:9px;color:var(--muted)}
+.back-btn{display:flex;align-items:center;gap:4px;padding:5px 10px;border-radius:8px;border:1px solid var(--border);background:rgba(162,89,255,0.1);color:var(--accent);font-size:12px;cursor:pointer;white-space:nowrap}
+.back-btn:active{background:rgba(162,89,255,0.22)}
+
+
+/* ── Word tap tooltip ─────────────────────────────────── */
+#word-tooltip{
+  position:fixed;z-index:999;
+  background:#1a1040;border:1px solid var(--accent);
+  border-radius:10px;padding:8px 14px;
+  font-size:13px;color:#EEE8FF;
+  box-shadow:0 4px 24px rgba(0,0,0,0.5);
+  pointer-events:none;opacity:0;
+  transition:opacity .15s;max-width:220px;text-align:center;
+  line-height:1.4;
+}
+#word-tooltip.show{opacity:1;}
+#word-tooltip .wt-fr{font-weight:700;color:#EEE8FF;margin-bottom:3px;}
+#word-tooltip .wt-en{color:#A0E0FF;font-size:12px;}
+#word-tooltip .wt-loading{color:#9990BB;font-size:11px;font-style:italic;}
+.sfr-word{
+  cursor:pointer;border-radius:3px;
+  transition:background .1s;
+  display:inline;
+}
+.sfr-word:hover,.sfr-word.tapped{
+  background:rgba(162,89,255,0.25);
+}
+
+.blind-hidden{filter:blur(8px);user-select:none;cursor:pointer;transition:filter .2s;position:relative}
+.blind-hidden::after{
+  content:'Tap to reveal';
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:12px;color:#fff;background:rgba(0,0,0,0.35);border-radius:8px;
+  filter:none;font-weight:600;letter-spacing:0.5px;pointer-events:none;
+}
+.blind-hidden.revealed{filter:none}
+.blind-hidden.revealed::after{display:none}
+
+/* ── Template mode ────────────────────────────────────────── */
+#tmpl-panel{display:none;padding:10px 14px;background:rgba(80,40,160,0.08);border-top:1px solid rgba(162,89,255,0.2);border-bottom:1px solid rgba(162,89,255,0.2)}
+#tmpl-panel.visible{display:block}
+.tmpl-sentence{font-size:14px;line-height:1.8;color:var(--fg);margin-bottom:10px}
+.tmpl-slot{
+  display:inline-block;background:rgba(162,89,255,0.18);
+  border:1px solid rgba(162,89,255,0.4);border-radius:20px;
+  padding:1px 10px;cursor:pointer;font-weight:600;color:#c8a0ff;
+  font-size:13px;white-space:nowrap;transition:background .15s;
+  user-select:none;position:relative
+}
+.tmpl-slot:hover,.tmpl-slot:active{background:rgba(162,89,255,0.35)}
+.tmpl-slot::after{content:'▾';font-size:9px;margin-left:3px;opacity:0.6}
+.tmpl-slot-idx{font-size:9px;color:rgba(200,160,255,0.5);margin-left:2px}
+.tmpl-nav{display:flex;align-items:center;gap:8px;margin-top:6px;flex-wrap:wrap}
+.tmpl-counter{font-size:10px;color:var(--muted)}
+.tmpl-en{font-size:12px;color:var(--muted);margin-top:6px;font-style:italic;line-height:1.6}
+#tmpl-btn{font-size:11px;padding:5px 10px}
+#tmpl-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* Slot options drawer */
+.tmpl-opts-drawer{
+  margin:8px 0 4px;background:rgba(40,20,80,0.5);
+  border:1px solid rgba(162,89,255,0.25);border-radius:10px;
+  overflow:hidden;animation:slideDown .15s ease
+}
+@keyframes slideDown{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.tmpl-opts-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:6px 12px;border-bottom:1px solid rgba(162,89,255,0.15);
+  font-size:11px;color:rgba(200,160,255,0.7)
+}
+.tmpl-opts-header b{color:#c8a0ff;font-size:12px}
+.tmpl-opts-speak{
+  background:rgba(162,89,255,0.2);border:1px solid rgba(162,89,255,0.35);
+  border-radius:12px;padding:2px 10px;font-size:11px;color:#c8a0ff;cursor:pointer
+}
+.tmpl-opts-speak:hover{background:rgba(162,89,255,0.4)}
+.tmpl-opt-row{
+  display:flex;align-items:center;gap:10px;padding:7px 12px;
+  cursor:pointer;border-bottom:1px solid rgba(162,89,255,0.08);
+  transition:background .12s
+}
+.tmpl-opt-row:last-child{border-bottom:none}
+.tmpl-opt-row:hover,.tmpl-opt-row.active{background:rgba(162,89,255,0.2)}
+.tmpl-opt-row.active .tmpl-opt-fr{color:#e0c0ff;font-weight:700}
+.tmpl-opt-num{font-size:10px;color:rgba(200,160,255,0.4);min-width:18px;text-align:right}
+.tmpl-opt-fr{font-size:13px;color:#d4b0ff;flex:1}
+.tmpl-opt-en{font-size:11px;color:rgba(180,180,200,0.55);font-style:italic}
+.tmpl-opt-speak{
+  background:none;border:none;color:rgba(162,89,255,0.5);
+  font-size:13px;cursor:pointer;padding:0 2px;line-height:1
+}
+.tmpl-opt-speak:hover{color:#c8a0ff}
+.tmpl-slot.open{background:rgba(162,89,255,0.4);border-color:rgba(200,160,255,0.7)}
+
+#tmpl-autoplay.active{background:rgba(162,89,255,0.5);border-color:#c8a0ff;color:#fff}
+.tmpl-nav{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin-top:8px}
+#tmpl-en.speaking-en{color:rgba(180,220,255,0.9);font-style:normal;font-weight:500;transition:color .2s}
+</style>
+</head>
+<body>
+
+<div id="word-tooltip"><div class="wt-fr" id="wt-fr"></div><div class="wt-en" id="wt-en"></div></div>
+<div id="home-screen">
+  <div class="hdr">
+    <div class="hdr-title">TCF Canada — Préparation</div>
+    <div class="hdr-sub">6 tâches · 82 sujets · 5,220 options · Voix féminines</div>
+    <div class="grand-row">
+      <div class="grand-n" id="grand-pct">0%</div>
+      <div class="grand-r">
+        <div class="grand-lbl"><span id="grand-heard">0 heard</span><span>5,220 total</span></div>
+        <div class="grand-bar"><div class="grand-fill" id="grand-fill" style="width:0%"></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="sec-lbl">✍️ Expression écrite</div>
+  <div class="tgrid" id="grid-ecrite"></div>
+  <div class="sec-lbl">🎤 Expression orale</div>
+  <div class="tgrid" id="grid-orale"></div>
+  <div class="sec-lbl">📐 Templates de phrases</div>
+  <div class="tgrid" id="grid-templates"></div>
+</div>
+
+<div id="player-screen">
+<div id="sbg"></div>
+<div class="app">
+<div class="install-banner" id="install-banner">
+  <div class="install-txt"><strong>Add to Home Screen</strong><br>Works offline · No App Store needed</div>
+  <button class="install-btn" id="install-btn">Install</button>
+  <button class="install-close" id="install-close" aria-label="Dismiss">×</button>
+</div>
+
+<div class="topbar" style="display:flex;align-items:center;gap:8px;padding:10px 12px">
+  <button class="back-btn" id="back-btn">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    Tasks
+  </button>
+  <div style="flex:1;min-width:0">
+    <div class="t1" id="pt1" style="font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Loading…</div>
+    <div class="t2" id="pt2" style="font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"> </div>
+  </div>
+</div>
+<div class="task-info-bar"><span id="pt-reg">—</span><span id="pt-timing" style="color:var(--accent3);font-weight:600">—</span></div>
+<div class="vpanel">
+  <!-- Voice + per-voice sliders -->
+  <div class="vvoice-row">
+    <div class="vvoice-col">
+      <div class="vvoice-item">
+        <div class="vf-label">🇫🇷 French</div>
+        <select id="pfr" class="vf-sel"><option value="">Scanning…</option></select>
+      </div>
+      <div class="vvoice-item">
+        <div class="vf-label">🇬🇧 English</div>
+        <select id="pen" class="vf-sel"><option value="">Scanning…</option></select>
+      </div>
+    </div>
+    <div class="vslider-col">
+      <div class="vslider-item">
+        <span class="vslider-lbl">FR</span>
+        <div class="vslider-track-h">
+          <input type="range" class="vslider-h" id="vol-fr" min="0" max="1" step="0.05" value="1">
+        </div>
+        <span class="vslider-pct" id="vpct-fr">100%</span>
+      </div>
+      <div class="vslider-item">
+        <span class="vslider-lbl">EN</span>
+        <div class="vslider-track-h">
+          <input type="range" class="vslider-h" id="vol-en" min="0" max="1" step="0.05" value="1">
+        </div>
+        <span class="vslider-pct" id="vpct-en">100%</span>
+      </div>
+    </div>
+  </div>
+  <!-- ALL volume bar — full width underneath -->
+  <div class="vall-row">
+    <span class="vall-lbl">🔊 ALL</span>
+    <div class="vall-track">
+      <input type="range" class="vslider-h vall-input" id="vol-all" min="0" max="1" step="0.05" value="1">
+    </div>
+    <span class="vslider-pct" id="vpct-all">100%</span>
+  </div>
+  <div class="vstatus" id="vstatus"></div>
+  <div class="vwarn" id="vwarn"></div>
+</div>
+
+
+<div class="selrow">
+  <div><div class="lbl">Question Type</div>
+    <select id="sqtype" style="min-width:170px;font-size:11px">
+      <option value="">— All types —</option>
+    </select>
+  </div>
+  <div style="align-self:flex-end;padding-bottom:4px">
+    <span id="qtype-count" style="font-size:10px;color:var(--muted)"></span>
+  </div>
+</div>
+<div class="selrow">
+  <div><div class="lbl">Topic</div><select id="stopic"></select></div>
+  <div style="align-self:flex-end;margin-left:auto;display:flex;gap:6px">
+    <button id="tmpl-btn" class="btn" style="font-size:11px;padding:5px 10px">📐 Templates</button>
+    <button id="blind-toggle" class="btn" style="font-size:11px;padding:5px 10px">👁 Blind: Off</button>
+  </div>
+  <div><div class="lbl">Step</div><select id="sstep"></select></div>
+</div>
+
+<div class="setrow">
+  <div class="sett"><div class="lbl">Language</div>
+    <select id="slang">
+      <option value="both">FR → EN</option>
+      <option value="fr">French only</option>
+      <option value="en">English only</option>
+    </select>
+  </div>
+  <div class="sett"><div class="lbl">Speed</div>
+    <select id="sspd">
+      <option value="0.1">0.1× — ultra slow</option>
+      <option value="0.2">0.2×</option>
+      <option value="0.3">0.3×</option>
+      <option value="0.4">0.4×</option>
+      <option value="0.5">0.5×</option>
+      <option value="0.55">0.55×</option>
+      <option value="0.6">0.6×</option>
+      <option value="0.65">0.65×</option>
+      <option value="0.7">0.7×</option>
+      <option value="0.75">0.75×</option>
+      <option value="0.8">0.8×</option>
+      <option value="0.85" selected>0.85× — normal</option>
+      <option value="0.9">0.9×</option>
+      <option value="1.0">1.0×</option>
+      <option value="1.1">1.1× — fast</option>
+    </select>
+  </div>
+  <div class="sett"><div class="lbl">Repeat</div>
+    <select id="srep">
+      <option value="1" selected>1×</option>
+      <option value="2">2×</option>
+      <option value="3">3×</option>
+      <option value="5">5×</option>
+      <option value="7">7×</option>
+      <option value="10">10×</option>
+      <option value="13">13×</option>
+      <option value="15">15×</option>
+      <option value="20">20×</option>
+      <option value="25">25×</option>
+      <option value="30">30×</option>
+      <option value="35">35×</option>
+      <option value="40">40×</option>
+      <option value="45">45×</option>
+      <option value="50">50×</option>
+      <option value="75">75×</option>
+      <option value="100">100×</option>
+      <option value="125">125×</option>
+      <option value="150">150×</option>
+      <option value="175">175×</option>
+      <option value="200">200×</option>
+      <option value="225">225×</option>
+      <option value="250">250×</option>
+      <option value="275">275×</option>
+      <option value="300">300×</option>
+    </select>
+  </div>
+  <div class="sett"><div class="lbl">Switch lang</div>
+    <button class="lswitch" id="blsw">🔁 FR↔EN</button>
+  </div>
+</div>
+
+<div class="smeta">
+  <div class="sname" id="sname"></div>
+  <div class="badges"><span class="c1b" id="c1b">C1 SIGNAL</span><span class="repb" id="repb"></span></div>
+</div>
+<div class="tipbox" id="tipbox"></div>
+
+<div id="tmpl-panel">
+  <div class="tmpl-sentence" id="tmpl-sentence"></div>
+  <div id="tmpl-opts-drawer"></div>
+  <div class="tmpl-en" id="tmpl-en"></div>
+  <div class="tmpl-nav">
+    <button class="btn" id="tmpl-prev" style="padding:3px 10px;font-size:12px">◀</button>
+    <span class="tmpl-counter" id="tmpl-counter"></span>
+    <button class="btn" id="tmpl-next" style="padding:3px 10px;font-size:12px">▶</button>
+    <button class="btn" id="tmpl-shuffle" style="padding:3px 10px;font-size:11px">⟳ Shuffle</button>
+    <button class="btn" id="tmpl-speak" style="padding:3px 10px;font-size:11px">▶ Speak</button>
+    <button class="btn" id="tmpl-drill" style="padding:3px 10px;font-size:11px">🎧 Drill</button>
+    <button class="btn" id="tmpl-play" style="padding:3px 10px;font-size:11px">▶ Play</button>
+    <button class="btn" id="tmpl-autoplay" style="padding:3px 10px;font-size:11px">⏩ Auto</button>
+  </div>
+</div>
+<div class="sarea" style="display:flex;gap:8px;align-items:stretch">
+  <div style="flex:1;display:flex;flex-direction:column;gap:6px;min-width:0">
+    <div class="sfr" id="sfr"></div>
+    <div class="sen" id="sen"></div>
+  </div>
+  <div id="eq-panel" style="
+    display:flex;flex-direction:column;align-items:center;gap:4px;
+    padding:6px 5px;border-left:1px solid rgba(162,89,255,0.2);
+    background:rgba(162,89,255,0.05);border-radius:0 8px 8px 0;
+    min-width:36px">
+    <div style="font-size:8px;color:var(--muted);font-weight:700;letter-spacing:1px">EQ</div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:1px">
+      <div style="font-size:8px;color:var(--accent3)">Hi</div>
+      <input type="range" id="eq-high" min="-12" max="12" value="0" step="1" orient="vertical"
+        style="writing-mode:vertical-lr;direction:rtl;height:44px;cursor:pointer;accent-color:var(--accent3)">
+      <div id="eq-high-val" style="font-size:8px;color:var(--muted)">0</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:1px">
+      <div style="font-size:8px;color:var(--accent2)">Mid</div>
+      <input type="range" id="eq-mid" min="-12" max="12" value="0" step="1" orient="vertical"
+        style="writing-mode:vertical-lr;direction:rtl;height:44px;cursor:pointer;accent-color:var(--accent2)">
+      <div id="eq-mid-val" style="font-size:8px;color:var(--muted)">0</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:1px">
+      <div style="font-size:8px;color:var(--accent)">Lo</div>
+      <input type="range" id="eq-low" min="-12" max="12" value="0" step="1" orient="vertical"
+        style="writing-mode:vertical-lr;direction:rtl;height:44px;cursor:pointer;accent-color:var(--accent)">
+      <div id="eq-low-val" style="font-size:8px;color:var(--muted)">0</div>
+    </div>
+    <button id="eq-reset" class="btn" style="padding:1px 4px;font-size:9px;width:24px;min-height:0">↺</button>
+  </div>
+</div>
+
+<div class="prow">
+  <div class="dots" id="dotrow"></div>
+  <span class="pnum" id="pnum"></span>
+</div>
+
+<div class="ctrls">
+  <div class="crow1">
+    <button class="btn play-idle" id="bplay">
+      <svg class="ic" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/></svg>
+      Play
+    </button>
+    <button class="btn" id="bstop">
+      <svg class="ic" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" fill="currentColor" stroke="none"/></svg>
+      Stop
+    </button>
+    <button class="btn" id="bauto">
+      <svg class="ic" viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+      Auto-play all
+    </button>
+  </div>
+  <div class="crow2">
+    <button class="btn nb" id="bprev"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg> Prev</button>
+    <div class="nc" id="navc"></div>
+    <button class="btn nb" id="bnext">Next <svg class="ic" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</div>
+
+</div><!-- .app -->
+</div>
+
+<div id="tmpl-screen" style="display:none">
+<div id="ts-sbg"></div>
+<div class="app">
+
+<div class="topbar" style="display:flex;align-items:center;gap:8px;padding:10px 12px">
+  <button class="back-btn" id="ts-back">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    Tasks
+  </button>
+  <div style="flex:1;min-width:0">
+    <div class="t1" id="ts-t1" style="font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Loading…</div>
+    <div class="t2" id="ts-t2" style="font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"> </div>
+  </div>
+</div>
+<div class="task-info-bar"><span id="ts-reg">—</span><span id="ts-timing" style="color:var(--accent3);font-weight:600">—</span></div>
+
+<div class="vpanel">
+  <div class="vvoice-row">
+    <div class="vvoice-col">
+      <div class="vvoice-item">
+        <div class="vf-label">🇫🇷 French</div>
+        <select id="ts-pfr" class="vf-sel"><option value="">Scanning…</option></select>
+      </div>
+      <div class="vvoice-item">
+        <div class="vf-label">🇬🇧 English</div>
+        <select id="ts-pen" class="vf-sel"><option value="">Scanning…</option></select>
+      </div>
+    </div>
+    <div class="vslider-col">
+      <div class="vslider-item">
+        <span class="vslider-lbl">FR</span>
+        <div class="vslider-track-h"><input type="range" class="vslider-h" id="ts-vol-fr" min="0" max="1" step="0.05" value="1"></div>
+        <span class="vslider-pct" id="ts-vpct-fr">100%</span>
+      </div>
+      <div class="vslider-item">
+        <span class="vslider-lbl">EN</span>
+        <div class="vslider-track-h"><input type="range" class="vslider-h" id="ts-vol-en" min="0" max="1" step="0.05" value="1"></div>
+        <span class="vslider-pct" id="ts-vpct-en">100%</span>
+      </div>
+    </div>
+  </div>
+  <div class="vall-row">
+    <span class="vall-lbl">🔊 ALL</span>
+    <div class="vall-track"><input type="range" class="vslider-h vall-input" id="ts-vol-all" min="0" max="1" step="0.05" value="1"></div>
+    <span class="vslider-pct" id="ts-vpct-all">100%</span>
+  </div>
+</div>
+
+<div class="selrow">
+  <div><div class="lbl">Step</div><select id="ts-step"></select></div>
+  <div style="align-self:flex-end;margin-left:auto">
+    <span id="ts-step-count" style="font-size:10px;color:var(--muted)"></span>
+  </div>
+</div>
+
+<div class="setrow">
+  <div class="sett"><div class="lbl">Language</div>
+    <select id="ts-lang">
+      <option value="both">FR → EN</option>
+      <option value="fr">French only</option>
+      <option value="en">English only</option>
+    </select>
+  </div>
+  <div class="sett"><div class="lbl">Speed</div>
+    <select id="ts-spd">
+      <option value="0.1">0.1× — ultra slow</option>
+      <option value="0.2">0.2×</option><option value="0.3">0.3×</option>
+      <option value="0.4">0.4×</option><option value="0.5">0.5×</option>
+      <option value="0.55">0.55×</option><option value="0.6">0.6×</option>
+      <option value="0.65">0.65×</option><option value="0.7">0.7×</option>
+      <option value="0.75">0.75×</option><option value="0.8">0.8×</option>
+      <option value="0.85" selected>0.85× — normal</option>
+      <option value="0.9">0.9×</option><option value="1.0">1.0×</option>
+      <option value="1.1">1.1× — fast</option>
+    </select>
+  </div>
+  <div class="sett"><div class="lbl">Repeat</div>
+    <select id="ts-rep">
+      <option value="1" selected>1×</option><option value="2">2×</option>
+      <option value="3">3×</option><option value="5">5×</option>
+      <option value="7">7×</option><option value="10">10×</option>
+      <option value="15">15×</option><option value="20">20×</option>
+    </select>
+  </div>
+  <div class="sett"><div class="lbl">Switch lang</div>
+    <button class="lswitch" id="ts-blsw">🔁 FR↔EN</button>
+  </div>
+</div>
+
+<div class="smeta">
+  <div class="sname" id="ts-sname"></div>
+  <div class="badges"><span class="c1b">📐 TEMPLATE</span><span class="repb" id="ts-repb"></span></div>
+</div>
+
+<div class="sarea" style="display:flex;gap:8px;align-items:stretch">
+  <div style="flex:1;display:flex;flex-direction:column;gap:6px;min-width:0">
+    <div class="sfr tmpl-sentence" id="ts-fr"></div>
+    <div id="ts-opts-drawer"></div>
+    <div class="sen tmpl-en" id="ts-en" style="min-height:1.4em"></div>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 5px;border-left:1px solid rgba(162,89,255,0.2);background:rgba(162,89,255,0.05);border-radius:0 8px 8px 0;min-width:36px">
+    <div style="font-size:8px;color:var(--muted);font-weight:700;letter-spacing:1px">EQ</div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:1px">
+      <div style="font-size:8px;color:var(--accent3)">Hi</div>
+      <input type="range" id="ts-eq-high" min="-12" max="12" value="0" step="1" orient="vertical" style="writing-mode:vertical-lr;direction:rtl;height:44px;cursor:pointer;accent-color:var(--accent3)">
+      <div id="ts-eq-high-val" style="font-size:8px;color:var(--muted)">0</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:1px">
+      <div style="font-size:8px;color:var(--accent2)">Mid</div>
+      <input type="range" id="ts-eq-mid" min="-12" max="12" value="0" step="1" orient="vertical" style="writing-mode:vertical-lr;direction:rtl;height:44px;cursor:pointer;accent-color:var(--accent2)">
+      <div id="ts-eq-mid-val" style="font-size:8px;color:var(--muted)">0</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:1px">
+      <div style="font-size:8px;color:var(--accent)">Lo</div>
+      <input type="range" id="ts-eq-low" min="-12" max="12" value="0" step="1" orient="vertical" style="writing-mode:vertical-lr;direction:rtl;height:44px;cursor:pointer;accent-color:var(--accent)">
+      <div id="ts-eq-low-val" style="font-size:8px;color:var(--muted)">0</div>
+    </div>
+    <button id="ts-eq-reset" class="btn" style="padding:1px 4px;font-size:9px;width:24px;min-height:0">↺</button>
+  </div>
+</div>
+
+<div class="prow">
+  <div class="dots" id="ts-dots"></div>
+  <span class="pnum" id="ts-pnum"></span>
+</div>
+
+<div class="ctrls">
+  <div class="crow1">
+    <button class="btn play-idle" id="ts-play">
+      <svg class="ic" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/></svg>
+      Play
+    </button>
+    <button class="btn" id="ts-stop">
+      <svg class="ic" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" fill="currentColor" stroke="none"/></svg>
+      Stop
+    </button>
+    <button class="btn" id="ts-auto">
+      <svg class="ic" viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+      Auto-play all
+    </button>
+  </div>
+  <div class="crow2">
+    <button class="btn nb" id="ts-prev"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg> Prev</button>
+    <div class="nc" id="ts-navc"></div>
+    <button class="btn nb" id="ts-next">Next <svg class="ic" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</div>
+
+</div><!-- .app -->
+</div><!-- #tmpl-screen -->
+
+<script>
+const ALL_DATA={}; // loaded async
+;
+const TASK_META=[{"key":"e1","label":"Écrite Tâche 1","short":"É1","reg":"Informal (tu)","timing":"10 min · Writing","desc":"Message informel · 60–80 mots","color":"#4FC3F7"},{"key":"e2","label":"Écrite Tâche 2","short":"É2","reg":"Semi-formal","timing":"20 min · Writing","desc":"Message argumenté · 120–150 mots","color":"#29B6F6"},{"key":"e3","label":"Écrite Tâche 3","short":"É3","reg":"Formal","timing":"30 min · Writing","desc":"Essai formel · 180–200 mots","color":"#0288D1"},{"key":"o1","label":"Orale Tâche 1","short":"O1","reg":"Informal (tu)","timing":"Prep 1 min · 1–2 min","desc":"Réaction spontanée","color":"#A259FF"},{"key":"o2","label":"Orale Tâche 2","short":"O2","reg":"Formal (vous)","timing":"Prep 1 min · 2–3 min","desc":"Appel à un service","color":"#FF6AC1"},{"key":"o3","label":"Orale Tâche 3","short":"O3","reg":"Formal","timing":"Prep 3 min · 3–5 min","desc":"Monologue + débat","color":"#00F0C0"}];
+const COUNTS={"e1":800,"e2":1800,"e3":960,"o1":560,"o2":500,"o3":600};
+const TOTAL_OPTS=5220;
+
+function loadProg(){try{return JSON.parse(localStorage.getItem('tcf_prog')||'{}')}catch(e){return{}}}
+function saveProg(){try{localStorage.setItem('tcf_prog',JSON.stringify(progress))}catch(e){}}
+var progress=loadProg();
+
+function countHeard(key){
+  var p=progress[key]||{},n=0;
+  Object.values(p).forEach(function(t){Object.values(t).forEach(function(s){n+=Object.keys(s).length;});});
+  return n;
+}
+
+function buildCards(){
+  document.getElementById('grid-ecrite').innerHTML='';
+  document.getElementById('grid-orale').innerHTML='';
+  TASK_META.forEach(function(m){
+    var c=document.createElement('div');
+    c.className='tcard';
+    c.innerHTML=
+      '<div class="tcard-stripe" style="background:'+m.color+'"></div>'+
+      '<div class="tcard-short">'+m.short+'</div>'+
+      '<div class="tcard-label">'+m.label+'</div>'+
+      '<div class="tcard-desc">'+m.desc+'</div>'+
+      '<div class="tcard-badges"><span class="tbadge">'+m.reg+'</span><span class="tbadge">'+m.timing+'</span></div>'+
+      '<div class="tcard-bar"><div class="tcard-bar-fill" id="fill-'+m.key+'" style="background:'+m.color+';width:0%"></div></div>'+
+      '<div class="tcard-bar-lbl"><span id="heard-'+m.key+'">0 heard</span><span>'+COUNTS[m.key]+' total</span></div>';
+    c.addEventListener('click',function(){openTask(m.key);});
+    document.getElementById(['e1','e2','e3'].includes(m.key)?'grid-ecrite':'grid-orale').appendChild(c);
+  });
+}
+
+function refreshCards(){
+  var total=0;
+  TASK_META.forEach(function(m){
+    var h=countHeard(m.key);total+=h;
+    var pct=COUNTS[m.key]?Math.round(h/COUNTS[m.key]*100):0;
+    var f=document.getElementById('fill-'+m.key);if(f)f.style.width=pct+'%';
+    var l=document.getElementById('heard-'+m.key);if(l)l.textContent=h+' heard';
+  });
+  var gp=Math.round(total/TOTAL_OPTS*100);
+  document.getElementById('grand-pct').textContent=gp+'%';
+  document.getElementById('grand-heard').textContent=total+' heard';
+  document.getElementById('grand-fill').style.width=gp+'%';
+}
+
+var currentKey=null;
+
+function openTask(key){
+  doStop();
+  currentKey=key;
+  var m=TASK_META.find(function(x){return x.key===key;});
+  DATA=ALL_DATA[key];
+  cloneData();
+  heard=progress[key]||{};
+  // Reset and re-render template panel when task changes
+  tmplIdx=0; tmplSlotIndices={};
+  if(tmplVisible) renderTemplate();
+  document.getElementById('pt1').textContent='TCF Canada — '+m.label;
+  document.getElementById('pt2').textContent=m.desc+' · '+DATA.length+' sujets';
+  document.getElementById('pt-reg').textContent='Register: '+m.reg;
+  document.getElementById('pt-timing').textContent='⏱ '+m.timing;
+  document.getElementById('home-screen').style.display='none';
+  document.getElementById('player-screen').style.display='block';
+  window.scrollTo(0,0);
+  T=0;S=0;O=0;
+  populateQtypeFilter();populateTopics();applyQtypeFormat();populateSteps();render();setPlayState('idle');initVol3();
+}
+
+document.getElementById('back-btn').addEventListener('click',function(){
+  doStop();
+  if(currentKey){progress[currentKey]=heard;}
+  saveProg();  document.getElementById('player-screen').style.display='none';
+  document.getElementById('home-screen').style.display='block';
+  window.scrollTo(0,0);
+});
+
+var DATA=null;
+
+let T=0, S=0, O=0;
+let heard={};
+let allVoices=[];
+
+// ─── Utterance token system ─────────────────────────────────────────────────
+// Every time we start a new utterance we mint a fresh token.
+// The onend callback checks its captured token against the live one.
+// If they differ (because stop/pause happened) the callback is a no-op.
+// This makes ALL stale callbacks completely harmless.
+let liveToken = 0;
+
+// ── Volume getters — read fresh at utterance creation ─────────────────────
+// Browser TTS (especially Safari) does NOT route through Web Audio.
+// The utterance .volume property is the only thing that works.
+// We read it fresh every time speakCurrent() fires, so any slider
+// change takes effect on the very next sentence automatically.
+function getVolFr(){
+  const all=parseFloat(document.getElementById('vol-all').value);
+  const fr=parseFloat(document.getElementById('vol-fr').value);
+  return Math.min(1, all*fr);
+}
+function getVolEn(){
+  const all=parseFloat(document.getElementById('vol-all').value);
+  const en=parseFloat(document.getElementById('vol-en').value);
+  return Math.min(1, all*en);
+}
+
+function initVol3(){
+  ['all','fr','en'].forEach(id=>{
+    const slider=document.getElementById('vol-'+id);
+    const pct=document.getElementById('vpct-'+id);
+    function upd(){
+      const v=parseFloat(slider.value);
+      pct.textContent=Math.round(v*100)+'%';
+      // Flash the label to show change registered
+      pct.style.color='var(--accent2)';
+      clearTimeout(slider._t);
+      slider._t=setTimeout(()=>pct.style.color='',600);
+    }
+    slider.addEventListener('input',upd);
+    upd();
+  });
+}
+function mintToken(){ return ++liveToken; }
+function isLive(tok){ return tok === liveToken; }
+
+// ─── Session state ──────────────────────────────────────────────────────────
+// A "session" = playing one option (with repeats).
+// items[]  = [{text, voiceFn, fallbackLang}]  (built from lang selector)
+// cursor   = which item we're on (0=FR, 1=EN in "both" mode)
+// repsDone = how many full passes completed
+let session = null;
+/*
+session = {
+  items:      [{text,voiceFn,fallbackLang}, ...],
+  cursor:     0,          ← which item is CURRENTLY speaking
+  repsDone:   0,
+  totalReps:  1,
+  onDone:     fn | null,
+  paused:     false,
+}
+*/
+
+let autoMode = false;
+let autoTimer = null;
+
+// ─── Core speak ─────────────────────────────────────────────────────────────
+function rawCancel(){
+  try{ window.speechSynthesis.cancel(); }catch(e){}
+}
+
+// Speak session.items[session.cursor].
+// Mints a token so any previous stale onend is a no-op.
+function buildAnnouncement(){
+  const topic = originalData ? originalData[T] : DATA[T];
+  const step = getStep(T,S);
+  const topicName = topic ? topic.title.replace(/^TOPIC \d+ [\u2014-] /,'').replace(/^SITUATION \d+ [\u2014-] /,'') : '';
+  const qsel = document.getElementById('sqtype');
+  const qtype = qsel ? qsel.value : '';
+  const stepLabel = step ? step.label.replace(/^STEP \d+ [\u2014-] /,'') : '';
+  const parts = [];
+  if(topicName) parts.push(topicName);
+  if(qtype) parts.push(qtype);
+  if(stepLabel) parts.push(stepLabel);
+  return parts.join('. ');
+}
+
+function speakAnnouncement(text, onDone){
+  var u = new SpeechSynthesisUtterance(text);
+  u.voice = getEnVoice();
+  u.lang = 'en-US';
+  u.rate = 0.9;
+  u.onend = onDone;
+  u.onerror = onDone;
+  window.speechSynthesis.speak(u);
+}
+
+function speakCurrent(){
+  if(!session || session.paused) return;
+
+  const item = session.items[session.cursor];
+  const tok  = mintToken();   // invalidates all previous callbacks
+  const voice = item.voice !== undefined ? item.voice : (item.voiceFn ? item.voiceFn() : null);
+  const rate  = parseFloat(document.getElementById('sspd').value);
+  // Read volume fresh every utterance — picks up slider changes instantly on next sentence
+  const vol = (item.channel==='en') ? getVolEn() : getVolFr();
+
+  rawCancel();
+
+  setTimeout(()=>{
+    if(!isLive(tok)) return;   // paused/stopped while waiting
+
+    const u = new SpeechSynthesisUtterance(item.text);
+    if(voice){ u.voice=voice; u.lang=voice.lang; }
+    else if(item.fallbackLang){ u.lang=item.fallbackLang; }
+    u.rate=rate;
+    // EQ → pitch: High +12dB = pitch 1.48, Low +12dB = pitch 0.52, both 0 = pitch 1.0
+    u.pitch  = Math.max(0.5, Math.min(2.0, 1.0 + (window._eqPitchAdj||0)));
+    // EQ → volume: Mid boosts/cuts loudness
+    u.volume = Math.max(0.1, Math.min(1.0, vol + (window._eqVolAdj||0)));
+
+    u.onend = ()=>{
+      if(!isLive(tok)) return;   // stale — ignore completely
+      advanceSession();
+    };
+    u.onerror = ()=>{
+      if(!isLive(tok)) return;
+      advanceSession();
+    };
+
+    window.speechSynthesis.speak(u);
+  }, 100);
+}
+
+// Called only by a live onend — advance cursor or repeat
+function advanceSession(){
+  if(!session || session.paused) return;
+
+  session.cursor++;
+
+  if(session.cursor < session.items.length){
+    // More items in this pass (e.g. move from FR to EN)
+    const gap = 750;
+    const tok = mintToken();
+    setTimeout(()=>{
+      if(!isLive(tok)) return;
+      speakCurrent();
+    }, gap);
+    return;
+  }
+
+  // Finished one full pass
+  session.cursor = 0;
+  session.repsDone++;
+  updateRepBadge(session.repsDone, session.totalReps);
+
+  if(session.repsDone >= session.totalReps){
+    // All done
+    const cb = session.onDone;
+    session = null;
+    setPlayState('idle');
+    if(cb) cb();
+    return;
+  }
+
+  // Another repeat — 1.3s gap then restart from item 0
+  const tok = mintToken();
+  setTimeout(()=>{
+    if(!isLive(tok)) return;
+    speakCurrent();
+  }, 1300);
+}
+
+// ─── Play / Pause / Resume / Stop ──────────────────────────────────────────
+
+function doPlay(){
+  doStop();   // clean slate
+  markHeard(T,S,O);
+  render();
+  session = {
+    items:     buildItems(),
+    cursor:    0,
+    repsDone:  0,
+    totalReps: parseInt(document.getElementById('srep').value),
+    onDone:    null,
+    paused:    false,
+  };
+  updateRepBadge(0, session.totalReps);
+  setPlayState('playing');
+  var ann = buildAnnouncement();
+  if(ann){ speakAnnouncement(ann, function(){ if(session && !session.paused) speakCurrent(); }); }
+  else { speakCurrent(); }
+}
+
+function doPause(){
+  if(!session) return;
+  // Freeze cursor exactly where it is.
+  // Invalidate token so the in-flight onend becomes a no-op.
+  session.paused = true;
+  mintToken();      // invalidates current utterance's onend
+  rawCancel();
+  setPlayState('paused');
+}
+
+function doResume(){
+  if(!session){
+    doPlay();
+    return;
+  }
+  session.paused = false;
+  setPlayState('playing');
+  speakCurrent();   // cursor unchanged — resumes from exact item
+}
+
+function doStop(){
+  mintToken();      // invalidate everything in flight
+  rawCancel();
+  session   = null;
+  stopAuto();
+  setPlayState('idle');
+  document.getElementById('repb').style.display='none';
+}
+
+// ─── Auto-play ──────────────────────────────────────────────────────────────
+// ── Question type cycling helpers (global scope) ────────────────────────────
+var autoQI = 0;
+
+function getAutoQtypes(){
+  const taskKey = getCurrentTaskKey();
+  if(!taskKey || !QTYPE_STEPS[taskKey]) return [''];
+  return ['', ...Object.keys(QTYPE_STEPS[taskKey])];
+}
+
+function setQtype(val){
+  const sel = document.getElementById('sqtype');
+  if(sel){ sel.value = val; }
+}
+
+function startAuto(){
+  doStop();
+  autoMode = true;
+  autoQI = 0;
+  const _qt=getAutoQtypes(); setQtype(_qt[0]);
+  document.getElementById('bauto').className='btn auto-on';
+  document.getElementById('bauto').innerHTML='<svg class="ic" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" fill="currentColor" stroke="none"/></svg> Stop auto';
+
+  const topic = DATA[T];
+
+  function playNext(){
+    if(!autoMode) return;
+    revealedThisItem=false;
+    markHeard(T,S,O);
+    render();
+    const topicRef = originalData ? originalData[T] : DATA[T];
+    const stepCount = topicRef ? topicRef.steps.length : DATA[T].steps.length;
+    const step = getStep(T,S);
+    const qtypes = getAutoQtypes();
+    session = {
+      items:     buildItems(),
+      cursor:    0,
+      repsDone:  0,
+      totalReps: parseInt(document.getElementById('srep').value),
+      paused:    false,
+      onDone: ()=>{
+        if(!autoMode) return;
+        if(O < step.opts.length-1){
+          // Next option in same step
+          O++;
+          autoTimer = setTimeout(playNext, 2000);
+        } else if(S < stepCount-1){
+          // Next step in same topic+qtype
+          S++; O=0;
+          document.getElementById('sstep').value=S;
+          autoTimer = setTimeout(playNext, 2500);
+        } else if(autoQI < qtypes.length-1){
+          // Next question type for same topic
+          autoQI++;
+          setQtype(qtypes[autoQI]);
+          S=0; O=0;
+          document.getElementById('sstep').value=0;
+          autoTimer = setTimeout(playNext, 3500);
+        } else if(T < DATA.length-1){
+          // Next topic, reset qtype to first
+          T++; S=0; O=0; autoQI=0;
+          setQtype(qtypes[0]);
+          document.getElementById('stopic').value=T;
+          populateSteps();
+          autoTimer = setTimeout(playNext, 3000);
+        } else {
+          doStop();
+        }
+      }
+    };
+    updateRepBadge(0, session.totalReps);
+    setPlayState('playing');
+    speakCurrent();
+  }
+
+  playNext();
+}
+
+function stopAuto(){
+  autoMode = false;
+  clearTimeout(autoTimer);
+  document.getElementById('bauto').className='btn';
+  document.getElementById('bauto').innerHTML='<svg class="ic" viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg> Auto-play all';
+}
+
+// ─── Helpers ────────────────────────────────────────────────────────────────
+function buildItems(){
+  const lang = document.getElementById('slang').value;
+  const step = getStep(T,S);
+  const [fr,en] = step.opts[O];
+  // Lock voice objects NOW — don't call voiceFn() per utterance (causes drift on iOS)
+  const frVoice=getFrVoice();
+  const enVoice=getEnVoice();
+  const items=[];
+  if(lang==='fr' || lang==='both') items.push({text:fr, voice:frVoice, fallbackLang:'fr-FR', channel:'fr'});
+  if(lang==='en' || lang==='both') items.push({text:en, voice:enVoice, fallbackLang:'en-GB', channel:'en'});
+  return items;
+}
+
+function setPlayState(state){
+  const b = document.getElementById('bplay');
+  b.dataset.s = state;
+  if(state==='idle'){
+    b.className='btn play-idle';
+    b.innerHTML='<svg class="ic" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/></svg> Play';
+  } else if(state==='playing'){
+    b.className='btn play-playing';
+    b.innerHTML='<svg class="ic" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" fill="currentColor" stroke="none"/><rect x="14" y="4" width="4" height="16" fill="currentColor" stroke="none"/></svg> Pause';
+  } else if(state==='paused'){
+    b.className='btn play-paused';
+    b.innerHTML='<svg class="ic" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/></svg> Resume';
+  }
+}
+
+function updateRepBadge(done,total){
+  const b=document.getElementById('repb');
+  if(total>1 && done<total){ b.style.display='inline-block'; b.textContent=(done+1)+'× of '+total; }
+  else b.style.display='none';
+}
+
+// ─── Voices ─────────────────────────────────────────────────────────────────
+function getFrVoice(){ const v=document.getElementById('pfr').value; return v!==''?allVoices[+v]:null; }
+function getEnVoice(){ const v=document.getElementById('pen').value; return v!==''?allVoices[+v]:null; }
+
+function isFemaleVoice(v){
+  // Known male names to exclude (Apple + Google + Microsoft)
+  const maleNames=/\b(thomas|daniel|alex|fred|tom|bruce|ralph|jorge|diego|carlos|juan|luca|matteo|oliver|james|lee|aaron|arthur|rishi|reed|rod|noel|donal|grandpa|junior|albert|bad|bahh|bells|boing|bubbles|cellos|deranged|good|hysterical|pipe|trinoids|whisper|wobble|zarvox)\b/i;
+  // Known female names (Apple devices)
+  const femaleNames=/\b(amelie|aurelie|marie|nanette|samantha|serena|karen|moira|veena|tessa|fiona|kate|alice|victoria|susan|allison|ava|zoe|nicky|siri)\b/i;
+  if(femaleNames.test(v.name)) return true;
+  if(maleNames.test(v.name)) return false;
+  // For unknown voices: include them (user can deselect if male)
+  return true;
+}
+
+function populateVoicePickers(){
+  allVoices = window.speechSynthesis.getVoices();
+  if(!allVoices.length) return;
+  const pf=document.getElementById('pfr');
+  const pe=document.getElementById('pen');
+  pf.innerHTML='<option value="">— select —</option>';
+  pe.innerHTML='<option value="">— select —</option>';
+
+  // Female-only filter
+  const frs=allVoices.filter(v=>v.lang.startsWith('fr')&&isFemaleVoice(v));
+  const ens=allVoices.filter(v=>v.lang.startsWith('en')&&isFemaleVoice(v));
+
+  // Fallback: if female filter gives nothing, show all
+  const frShow=frs.length?frs:allVoices.filter(v=>v.lang.startsWith('fr'));
+  const enShow=ens.length?ens:allVoices.filter(v=>v.lang.startsWith('en'));
+
+  if(frShow.length){
+    const g=document.createElement('optgroup');
+    g.label='French — female ('+(frs.length||frShow.length)+')';
+    frShow.forEach(v=>{ const o=document.createElement('option'); o.value=allVoices.indexOf(v); o.textContent=v.name+' ['+v.lang+']'; g.appendChild(o); });
+    pf.appendChild(g);
+  }
+  if(enShow.length){
+    const g=document.createElement('optgroup');
+    g.label='English — female ('+(ens.length||enShow.length)+')';
+    enShow.forEach(v=>{ const o=document.createElement('option'); o.value=allVoices.indexOf(v); o.textContent=v.name+' ['+v.lang+']'; g.appendChild(o); });
+    pe.appendChild(g);
+  }
+
+  // Best auto-select: priority order for French
+  const bestFr=
+    frShow.find(v=>/ameli/i.test(v.name))     ||  // Amélie (fr-CA) — best
+    frShow.find(v=>/aurel/i.test(v.name))     ||  // Aurélie
+    frShow.find(v=>/marie/i.test(v.name))     ||  // Marie
+    frShow.find(v=>v.lang==='fr-CA')          ||  // any fr-CA
+    frShow.find(v=>v.lang==='fr-FR')          ||  // any fr-FR
+    frShow[0];
+  if(bestFr) pf.value=allVoices.indexOf(bestFr);
+
+  // Best auto-select: priority order for English
+  const bestEn=
+    enShow.find(v=>/serena/i.test(v.name))   ||  // Serena (en-GB) — clear & natural
+    enShow.find(v=>/karen/i.test(v.name))    ||  // Karen (en-AU)
+    enShow.find(v=>/samantha/i.test(v.name)) ||  // Samantha (en-US)
+    enShow.find(v=>/moira/i.test(v.name))    ||  // Moira (en-IE)
+    enShow.find(v=>v.lang==='en-GB')         ||
+    enShow.find(v=>v.lang==='en-AU')         ||
+    enShow[0];
+  if(bestEn) pe.value=allVoices.indexOf(bestEn);
+
+  const total=frShow.length+enShow.length;
+  document.getElementById('vstatus').textContent=total+' female voices available. French: '+(bestFr?bestFr.name:'none selected')+' · English: '+(bestEn?bestEn.name:'none selected');
+  checkWarn();
+}
+
+function checkWarn(){
+  const msgs=[];
+  if(!document.getElementById('pfr').value) msgs.push('No French voice — install Amélie: Mac → System Settings → Accessibility → Spoken Content → Voices → French. iPhone → Settings → Accessibility → Spoken Content → Voices → French.');
+  if(!document.getElementById('pen').value) msgs.push('No English voice — install Serena [en-GB] for British accent the same way under English (UK).');
+  const w=document.getElementById('vwarn');
+  if(msgs.length){ w.style.display='block'; w.innerHTML=msgs.join('<br><br>'); }
+  else w.style.display='none';
+}
+
+// ─── Heard ───────────────────────────────────────────────────────────────────
+function markHeard(t,s,o){ if(!heard[t])heard[t]={}; if(!heard[t][s])heard[t][s]={}; heard[t][s][o]=true; }
+function isHeard(t,s,o){ return !!(heard[t]&&heard[t][s]&&heard[t][s][o]); }
+
+// ─── Render ──────────────────────────────────────────────────────────────────
+function render(){
+  if(!DATA) return;
+  const topic=DATA[T]; const step=getStep(T,S); const [fr,en]=step.opts[O];
+  document.getElementById('sname').textContent=(DATA[T]?DATA[T].title.replace(/^TOPIC \d+ — /,''):'')+' — '+step.label.replace(/^STEP \d+ — /,'');
+  document.getElementById('c1b').style.display=step.c1?'inline-block':'none';
+  document.getElementById('tipbox').textContent=step.tip;
+  const fe=document.getElementById('sfr'); const ee=document.getElementById('sen');
+  // Wrap each word in a tappable span for inline translation
+  fe.innerHTML=wrapWords(fr, en); ee.textContent=en; fe.scrollTop=0; ee.scrollTop=0;
+  const dr=document.getElementById('dotrow'); dr.innerHTML='';
+  step.opts.forEach((_,i)=>{
+    const d=document.createElement('span');
+    d.className='dot'+(isHeard(T,S,i)?' heard':'')+(i===O?' cur':'');
+    d.onclick=()=>{ doStop(); O=i; revealedThisItem=false; render(); };
+    dr.appendChild(d);
+  });
+  document.getElementById('pnum').textContent=(O+1)+' / '+step.opts.length;
+  const topicForCount=originalData?originalData[T]:DATA[T];
+  document.getElementById('navc').textContent='Step '+(S+1)+' of '+topicForCount.steps.length;
+  applyBlindMode();
+}
+
+// Question type format steps — dynamically swap Step 0 and last step
+var QTYPE_STEPS={"e1":{"Email / Courriel":{"header":{"label":"STEP 0 — Objet + Salutation (Email)","tip":"Always write Objet: on the first line, then your greeting on a new line. Match register to the recipient.","opts":[["Objet : Invitation à sortir ce week-end\n\nSalut Camille ! J'espère que tu vas bien et que ta semaine se passe bien.","Subject: Invitation to go out this weekend\n\nHi Camille! I hope you are well and that your week is going well."],["Objet : Nouvelles de mon nouveau quartier\n\nBonjour Sophie, j'espère que tu passes une excellente semaine de ton côté.","Subject: News from my new neighbourhood\n\nHello Sophie, I hope you are having an excellent week on your end."],["Objet : Annulation de notre sortie de samedi\n\nCoucou Léa ! Ça fait un moment — j'espère que tout va bien pour toi !","Subject: Cancellation of our Saturday outing\n\nHey Léa! It has been a while — I hope everything is going well for you!"],["Objet : Demande de renseignements sur votre service\n\nBonjour Madame, je me permets de vous contacter au sujet de votre annonce.","Subject: Request for information about your service\n\nHello Madam, I am taking the liberty of contacting you regarding your advertisement."],["Objet : Confirmation de ma présence à la fête\n\nCher Thomas, j'espère que ce message te trouve en bonne santé et de bonne humeur.","Subject: Confirmation of my attendance at the party\n\nDear Thomas, I hope this message finds you in good health and good spirits."],["Objet : Ma première semaine de travail\n\nSalut Marc ! Je t'écris rapidement pour te donner de mes nouvelles depuis mon nouveau poste.","Subject: My first week of work\n\nHi Marc! I am writing quickly to give you news from my new position."],["Objet : Proposition de week-end à la mer\n\nBonjour Nadia ! Je voulais te contacter pour te parler d'une idée qui me trotte dans la tête.","Subject: Suggestion for a weekend by the sea\n\nHello Nadia! I wanted to contact you to tell you about an idea that has been on my mind."],["Objet : Recherche d'un colocataire sérieux\n\nBonjour, suite à votre annonce, je vous contacte pour vous donner plus d'informations sur ma situation.","Subject: Looking for a serious flatmate\n\nHello, following your advertisement, I am contacting you to give you more information about my situation."],["Objet : Remerciements pour la belle soirée\n\nCoucou Emma ! Je voulais absolument te remercier pour cette soirée mémorable chez toi.","Subject: Thanks for the wonderful evening\n\nHey Emma! I absolutely wanted to thank you for that memorable evening at your place."],["Objet : Retard pour notre rendez-vous de demain\n\nSalut Julian ! Désolé(e) de t'écrire si tard mais j'ai quelque chose d'important à te dire.","Subject: Late for our appointment tomorrow\n\nHi Julian! Sorry to write so late but I have something important to tell you."]]},"signoff":{"label":"STEP 7 — Formule de clôture (Email)","tip":"End with a closing formula + your name. Match the register: informal for friends, formal for institutions.","opts":[["À très bientôt ! Bisous et passe une excellente semaine.\nClaire","See you very soon! Kisses and have an excellent week.\nClaire"],["J'attends ta réponse avec impatience. Amicalement,\nPaul","I look forward to your reply. Warmly,\nPaul"],["N'hésite pas à me répondre dès que tu peux. Grosses bises !\nSophie","Do not hesitate to reply as soon as you can. Big kisses!\nSophie"],["Dans l'attente de ta réponse, je t'embrasse fort. À très bientôt !\nMarco","Awaiting your reply, sending you a big hug. See you very soon!\nMarco"],["Cordialement,\nAmélie Durand","Kind regards,\nAmélie Durand"],["Bien cordialement et dans l'attente de votre réponse,\nKevin Martin","Kind regards and awaiting your reply,\nKevin Martin"],["Veuillez agréer, Madame, mes salutations distinguées.\nNadia Lefebvre","Please accept, Madam, my distinguished greetings.\nNadia Lefebvre"],["Merci d'avance et à bientôt ! Amicalement,\nLucas","Thank you in advance and see you soon! Warmly,\nLucas"],["Je t'embrasse fort et j'espère te voir bientôt !\nJulie","Hugging you tight and hoping to see you soon!\nJulie"],["Bonne journée et à très bientôt.\nThomas Bernard","Have a good day and see you very soon.\nThomas Bernard"]]}},"Message personnel":{"header":{"label":"STEP 0 — Salutation (Message personnel)","tip":"A personal message starts directly with a warm informal greeting — no subject line needed.","opts":[["Salut Camille ! Je voulais absolument te donner de mes nouvelles et te parler de quelque chose.","Hi Camille! I absolutely wanted to give you my news and talk to you about something."],["Coucou Sophie ! J'espère que tu vas bien. Je pensais à toi et j'avais envie de t'écrire.","Hey Sophie! I hope you are well. I was thinking of you and wanted to write to you."],["Bonjour Thomas ! Ça fait trop longtemps ! Comment tu vas depuis la dernière fois qu'on s'est vus ?","Hello Thomas! It has been too long! How are you since the last time we saw each other?"],["Salut Léa ! Tu as une minute ? J'ai quelque chose d'important à te raconter depuis hier.","Hi Léa! Do you have a minute? I have something important to tell you since yesterday."],["Coucou Marc ! Je t'écris parce que je pensais à toi et je voulais partager une bonne nouvelle.","Hey Marc! I am writing because I was thinking of you and wanted to share some good news."],["Salut à tous ! Je voulais vous donner de mes nouvelles et vous parler d'une belle surprise.","Hi everyone! I wanted to give you my news and tell you about a wonderful surprise."],["Bonjour Emma ! J'espère que tu passes une excellente semaine. Je t'écris pour te parler de quelque chose d'excitant.","Hello Emma! I hope you are having an excellent week. I am writing to tell you about something exciting."],["Coucou Nadia ! Je reviens vers toi parce que j'ai une nouvelle importante à partager avec toi.","Hey Nadia! I am coming back to you because I have important news to share with you."],["Salut Julian ! J'espère que tout va bien de ton côté. Moi j'ai quelque chose de sympa à te dire.","Hi Julian! I hope everything is going well on your end. I have something nice to tell you."],["Bonjour Inès ! Comment tu vas ? Je t'écris parce que je voulais absolument te parler de quelque chose.","Hello Inès! How are you? I am writing because I absolutely wanted to talk to you about something."]]},"signoff":{"label":"STEP 7 — Formule de clôture (Message personnel)","tip":"End warmly with your name. Bisous, À bientôt, Prends soin de toi are perfect.","opts":[["À très bientôt ! Grosses bises,\nClaire","See you very soon! Big kisses,\nClaire"],["J'espère te voir bientôt. Je t'embrasse,\nPaul","I hope to see you soon. Hugs,\nPaul"],["Réponds-moi vite ! Bisous,\nSophie","Write back soon! Kisses,\nSophie"],["Prends soin de toi. À bientôt !\nMarco","Take care of yourself. See you soon!\nMarco"],["À la prochaine ! Bisous à toi et à ta famille,\nAmélie","Until next time! Kisses to you and your family,\nAmélie"],["Je t'embrasse très fort. À très vite !\nKevin","Hugging you very tight. See you very soon!\nKevin"],["Amicalement et à bientôt,\nNadia","Warmly and see you soon,\nNadia"],["En attendant de se voir, grosses bises !\nLucas","While waiting to meet up, big kisses!\nLucas"],["À bientôt et prends soin de toi.\nJulie","See you soon and take care.\nJulie"],["Je pense à toi. Bisous,\nThomas","Thinking of you. Kisses,\nThomas"]]}},"Note / Petit mot":{"header":{"label":"STEP 0 — En-tête (Note / Petit mot)","tip":"A note is short and direct. Start with the recipient's name only — no subject line.","opts":[["Camille,","Camille,"],["Bonjour Sophie,","Hello Sophie,"],["Salut Marc,","Hi Marc,"],["Chère Léa,","Dear Léa,"],["Thomas,","Thomas,"],["Bonjour,","Hello,"],["Pour Emma — note rapide :","For Emma — quick note:"],["À l'attention de Monsieur Martin :","For the attention of Mr Martin:"],["Note pour Julian :","Note for Julian:"],["Bonjour Nadia,","Hello Nadia,"]]},"signoff":{"label":"STEP 7 — Signature (Note)","tip":"End briefly — just your name or a very short phrase + name.","opts":[["Claire","Claire"],["À bientôt, Paul","See you soon, Paul"],["Merci, Sophie","Thank you, Sophie"],["Bisous, Amélie","Kisses, Amélie"],["Bonne journée, Marco","Have a good day, Marco"],["À tout à l'heure, Kevin","See you soon, Kevin"],["Amicalement, Nadia","Warmly, Nadia"],["Cordialement, Lucas Dupont","Kind regards, Lucas Dupont"],["Merci d'avance, Julie","Thank you in advance, Julie"],["Bonne continuation, Thomas","All the best, Thomas"]]}},"Annonce courte":{"header":{"label":"STEP 0 — Titre de l'annonce","tip":"Write a bold, clear title in capitals or with a label. Be specific — what are you offering, seeking, or announcing?","opts":[["COLOCATION RECHERCHÉE — Appartement 65m², centre-ville, 550€/mois","FLATMATE WANTED — 65m² apartment, city centre, 550€/month"],["À VENDRE — Vélo de ville en excellent état, peu utilisé, 120€","FOR SALE — City bicycle in excellent condition, little used, 120€"],["COURS DE FRANÇAIS PROPOSÉS — Niveau débutant à avancé, tarif raisonnable","FRENCH LESSONS OFFERED — Beginner to advanced level, reasonable rate"],["RECHERCHE BABY-SITTER — Deux enfants, mercredi et vendredi après-midi","BABYSITTER WANTED — Two children, Wednesday and Friday afternoons"],["ÉVÉNEMENT — Fête de quartier samedi 15 juin, place centrale, 15h–22h","EVENT — Neighbourhood party Saturday 15 June, central square, 3pm–10pm"],["PERDU — Chat tigré, répondant au nom de Milo, quartier Saint-Jean","LOST — Tabby cat, answers to the name Milo, Saint-Jean neighbourhood"],["OFFRE DE SERVICES — Jardinage, bricolage, petits travaux à domicile","SERVICES OFFERED — Gardening, DIY, small home repairs"],["À LOUER — Studio meublé 30m², proche transports, disponible dès le 1er","FOR RENT — Furnished studio 30m², close to transport, available from the 1st"],["RECHERCHE COLOCATAIRE — 3 pièces, ambiance calme, non-fumeur(se) souhaité(e)","FLATMATE WANTED — 3 rooms, quiet atmosphere, non-smoker preferred"],["COURS DE GUITARE — Débutants bienvenus, domicile ou à distance, 25€/h","GUITAR LESSONS — Beginners welcome, at home or online, 25€/hour"]]},"signoff":{"label":"STEP 7 — Contact / Clôture (Annonce)","tip":"End with contact details. Be clear about how to reach you and when.","opts":[["N'hésitez pas à me contacter pour plus d'informations ou pour visiter.\nClaire — claire.martin@email.fr","Do not hesitate to contact me for more information or to visit.\nClaire — claire.martin@email.fr"],["Pour tout renseignement, écrivez-moi ou appelez le 06 12 34 56 78.\nPaul","For any information, write to me or call 06 12 34 56 78.\nPaul"],["Disponible pour répondre rapidement. Contact : sophie.dup@email.fr\nSophie","Available to respond quickly. Contact: sophie.dup@email.fr\nSophie"],["Sérieux(se) uniquement. Rendez-vous possible en semaine après 18h.\nMarco — 06 98 76 54 32","Serious enquiries only. Appointment possible on weekdays after 6pm.\nMarco — 06 98 76 54 32"],["Merci de me contacter par message. Je réponds dans la journée.\nAmélie","Please contact me by message. I respond within the day.\nAmélie"],["Joignable tous les jours de 9h à 19h. N'hésitez pas à écrire.\nKevin — k.martin@email.fr","Reachable every day from 9am to 7pm. Do not hesitate to write.\nKevin — k.martin@email.fr"],["Offre valable jusqu'au 30 juin. Contactez-moi rapidement !\nNadia — 06 11 22 33 44","Offer valid until 30 June. Contact me quickly!\nNadia — 06 11 22 33 44"],["Pour visiter ou en savoir plus : lucas.b@email.fr ou 06 55 44 33 22.\nLucas","To visit or find out more: lucas.b@email.fr or 06 55 44 33 22.\nLucas"],["Répondez à cette annonce ou contactez-moi directement. Je réponds vite.\nJulie — julie.lefebvre@email.fr","Reply to this announcement or contact me directly. I respond quickly.\nJulie — julie.lefebvre@email.fr"],["Merci de votre intérêt. À bientôt !\nThomas Bernard — 06 77 88 99 00","Thank you for your interest. See you soon!\nThomas Bernard — 06 77 88 99 00"]]}}},"e2":{"Article de blog":{"header":{"label":"STEP 0 — Titre de l'article de blog","tip":"Write a catchy, specific blog title on the first line. A bold claim, a question, or a personal angle all work well.","opts":[["Pourquoi j'ai tout changé dans ma vie — et ce que ça m'a appris","Why I changed everything in my life — and what it taught me"],["Six mois plus tard : mon bilan honnête sur cette expérience inattendue","Six months later: my honest assessment of this unexpected experience"],["Ce que personne ne vous dit avant de se lancer — mon témoignage sincère","What nobody tells you before starting out — my sincere testimony"],["J'avais peur d'essayer. Aujourd'hui je ne regrette rien. Voici pourquoi.","I was afraid to try. Today I have no regrets. Here is why."],["De zéro à convaincu(e) : comment cette expérience a changé mon regard","From zero to convinced: how this experience changed my perspective"],["Le jour où j'ai décidé de changer quelque chose — et ce qui s'est passé ensuite","The day I decided to change something — and what happened next"],["Mon avis après un an : entre déceptions et belles surprises","My opinion after a year: between disappointments and pleasant surprises"],["Cinq choses que cette expérience m'a apprises sur moi-même","Five things this experience taught me about myself"],["Pourquoi je recommande cette expérience à tout le monde — avec quelques nuances","Why I recommend this experience to everyone — with a few nuances"],["Ce que j'aurais voulu savoir avant de commencer — retour d'expérience complet","What I wish I had known before starting — complete feedback"]]},"signoff":{"label":"STEP 7 — Formule de clôture (Blog)","tip":"End with a question for readers or an invitation to comment + your name or blog handle.","opts":[["Et vous, avez-vous vécu quelque chose de similaire ? Partagez en commentaires !\nClaire — Le Blog de Claire","And you, have you experienced something similar? Share in the comments!\nClaire — Claire's Blog"],["J'adorerais connaître votre avis. À très bientôt sur ce blog !\nPaul","I would love to know your opinion. See you very soon on this blog!\nPaul"],["Laissez-moi un commentaire — je réponds toujours avec plaisir !\nSophie Écrit","Leave me a comment — I always respond with pleasure!\nSophie Writes"],["Si cet article vous a parlé, partagez-le. À la prochaine !\nMarco","If this article resonated with you, share it. Until next time!\nMarco"],["La prochaine fois je vous parlerai d'une autre aventure. Restez connectés !\nAmélie","Next time I will tell you about another adventure. Stay tuned!\nAmélie"],["Merci de me suivre sur ce blog. Vos commentaires me motivent énormément !\nKevin","Thank you for following this blog. Your comments motivate me enormously!\nKevin"],["À bientôt pour un prochain article. En attendant, dites-moi ce que vous pensez !\nNadia","See you soon for a next article. In the meantime, tell me what you think!\nNadia"],["Dites-moi en commentaires si vous avez des questions. Je suis là !\nLucas — Mon Journal de Bord","Tell me in the comments if you have questions. I am here!\nLucas — My Travel Log"],["Si cet article vous a inspiré, n'hésitez pas à le partager autour de vous !\nJulie","If this article inspired you, do not hesitate to share it around you!\nJulie"],["Merci pour votre fidélité. À très bientôt et prenez soin de vous !\nThomas","Thank you for your loyalty. See you very soon and take care!\nThomas"]]}},"Entrée de journal":{"header":{"label":"STEP 0 — Date et en-tête (Journal)","tip":"Start with a date and optionally a mood or title. Cher journal or a direct date line are both standard.","opts":[["Lundi 12 juin\n\nCher journal,","Monday 12 June\n\nDear diary,"],["15 mars — Journée mémorable\n\nJe prends quelques minutes pour noter ce qui s'est passé aujourd'hui.","15 March — Memorable day\n\nI am taking a few minutes to note down what happened today."],["Cher journal,\n\nAujourd'hui a été l'une de ces journées dont je me souviendrai longtemps.","Dear diary,\n\nToday was one of those days I will remember for a long time."],["Vendredi soir, 21h30\n\nJe me retrouve enfin seul(e) pour mettre mes pensées en ordre.","Friday evening, 9:30pm\n\nI find myself finally alone to sort out my thoughts."],["Journal — 3 septembre\n\nJe dois absolument noter tout ça avant que les détails ne s'effacent.","Diary — 3 September\n\nI absolutely must note all of this down before the details fade."],["Aujourd'hui, dimanche 20 octobre.\n\nQuelle semaine ! Je ne sais même pas par où commencer.","Today, Sunday 20 October.\n\nWhat a week! I do not even know where to start."],["27 janvier — Une journée qui change tout\n\nJe ne m'attendais vraiment pas à ce qui vient de se passer.","27 January — A day that changes everything\n\nI really did not expect what has just happened."],["Cher journal,\n\nCela fait plusieurs semaines que je ne t'ai pas écrit. Voici pourquoi.","Dear diary,\n\nIt has been several weeks since I wrote to you. Here is why."],["Mardi 8 avril, fin de journée\n\nJe voulais prendre le temps de réfléchir à ce que j'ai vécu ce mois-ci.","Tuesday 8 April, end of day\n\nI wanted to take the time to reflect on what I have experienced this month."],["Journal intime — nuit du 2 juillet\n\nMes pensées avant de dormir sur ce qui m'a marqué cette semaine.","Personal diary — night of 2 July\n\nMy thoughts before sleep on what marked me this week."]]},"signoff":{"label":"STEP 7 — Clôture du journal","tip":"End the journal entry naturally. À demain, Bonne nuit, or a short reflection.","opts":[["À demain, cher journal.\nClaire","Until tomorrow, dear diary.\nClaire"],["Bonne nuit. Je réfléchirai encore à tout ça demain.\nPaul","Good night. I will think about all of this some more tomorrow.\nPaul"],["Je ferme ce journal pour ce soir. À la prochaine entrée.\nSophie","I am closing this diary for tonight. Until the next entry.\nSophie"],["C'est tout pour aujourd'hui. Je me sens mieux d'avoir écrit ces lignes.\nMarco","That is all for today. I feel better for having written these lines.\nMarco"],["À la prochaine fois, cher journal.\nAmélie","Until next time, dear diary.\nAmélie"],["Voilà, j'ai mis mes idées en ordre. Bonne nuit.\nKevin","There we go, I have sorted my ideas. Good night.\nKevin"],["Je reviendrai écrire demain. Pour l'instant, au lit !\nNadia","I will come back to write tomorrow. For now, to bed!\nNadia"],["En attendant la prochaine entrée, à bientôt.\nLucas","Until the next entry, see you soon.\nLucas"],["C'est assez pour ce soir. Mes pensées continueront demain.\nJulie","That is enough for tonight. My thoughts will continue tomorrow.\nJulie"],["Voilà mes réflexions du jour. À bientôt, cher journal.\nThomas","There are my thoughts for the day. See you soon, dear diary.\nThomas"]]}},"Article de magazine":{"header":{"label":"STEP 0 — Titre et chapeau (Magazine)","tip":"Write a title + one compelling sentence underneath (the chapeau). The chapeau summarises the article in a single hook sentence.","opts":[["Une réalité qui nous concerne tous\n\nDe plus en plus de personnes se retrouvent confrontées à cette question qui divise et passionne.","A reality that concerns us all\n\nMore and more people find themselves faced with this question that divides and fascinates."],["Entre espoirs et inquiétudes : ce que disent les experts\n\nNotre dossier du mois fait le point sur une réalité complexe que l'on ne peut plus ignorer.","Between hopes and concerns: what the experts say\n\nOur feature of the month takes stock of a complex reality we can no longer ignore."],["Ils l'ont vécu. Ils témoignent.\n\nDes témoignages exclusifs éclairent un sujet trop souvent ignoré ou mal compris par le grand public.","They lived it. They testify.\n\nExclusive testimonies shed light on a subject too often ignored or misunderstood by the general public."],["Ce sujet qui change nos vies\n\nComment cette réalité est en train de transformer nos habitudes, nos villes et nos relations.","This subject that is changing our lives\n\nHow this reality is transforming our habits, our cities and our relationships."],["Le grand débat de notre époque\n\nUn sujet qui divise experts et citoyens mais que l'on ne peut plus esquiver.","The great debate of our era\n\nA subject that divides experts and citizens but which we can no longer avoid."],["Tout ce qu'il faut savoir en cinq points\n\nNotre rédaction a réuni les informations essentielles pour vous aider à y voir plus clair.","Everything you need to know in five points\n\nOur editorial team has gathered the essential information to help you see things more clearly."],["La vérité derrière les idées reçues\n\nEntre mythe et réalité, voici ce que la recherche et l'expérience nous enseignent vraiment.","The truth behind received wisdom\n\nBetween myth and reality, here is what research and experience truly teach us."],["Portrait d'une génération qui change les règles\n\nIls refusent les solutions toutes faites et inventent de nouvelles façons de faire face à ce défi.","Portrait of a generation changing the rules\n\nThey refuse ready-made solutions and invent new ways of facing this challenge."],["Ces femmes et ces hommes qui font la différence\n\nDes initiatives locales qui prouvent que le changement est possible quand on s'y met vraiment.","These women and men who make a difference\n\nLocal initiatives that prove change is possible when people truly commit to it."],["Pourquoi ce sujet ne peut plus attendre\n\nL'urgence est réelle et les solutions existent — il ne manque plus que la volonté collective d'agir.","Why this subject can wait no longer\n\nThe urgency is real and solutions exist — all that is missing is the collective will to act."]]},"signoff":{"label":"STEP 7 — Signature (Magazine)","tip":"End with the author's name and role. A brief bio line can follow.","opts":[["Claire Dubois, journaliste indépendante","Claire Dubois, independent journalist"],["Paul Martin — rédacteur pour Société et Vie","Paul Martin — editor for Society and Life"],["Article de Sophie Laurent. Réactions et commentaires bienvenus.","Article by Sophie Laurent. Reactions and comments welcome."],["Marco Ferretti couvre les sujets de société pour notre rédaction.","Marco Ferretti covers social issues for our editorial team."],["Texte : Amélie Rousseau. Cet article reflète l'opinion de son auteure.","Text: Amélie Rousseau. This article reflects the opinion of its author."],["Kevin Bonnet est sociologue. Il écrit régulièrement sur ces questions.","Kevin Bonnet is a sociologist. He writes regularly on these issues."],["Par Nadia Karim | Publié le 12 juin","By Nadia Karim | Published 12 June"],["Lucas Bernard — Contributeur régulier","Lucas Bernard — Regular contributor"],["Rédaction : Julie Moreau | Contact : j.moreau@magazine.fr","Editorial: Julie Moreau | Contact: j.moreau@magazine.fr"],["Thomas Girard, auteur de cet article, reste disponible pour tout échange.","Thomas Girard, author of this article, remains available for any exchange."]]}},"Lettre descriptive":{"header":{"label":"STEP 0 — En-tête de la lettre","tip":"Write city + date top right, then Objet if needed, then your greeting (Madame/Monsieur or Cher/Chère).","opts":[["Paris, le 12 juin 2025\n\nMadame, Monsieur,","Paris, 12 June 2025\n\nDear Madam, Sir,"],["Lyon, le 3 mars 2025\n\nChère Sophie,","Lyon, 3 March 2025\n\nDear Sophie,"],["Montréal, le 15 octobre 2025\n\nObjet : Demande d'information\n\nMadame, Monsieur,","Montreal, 15 October 2025\n\nSubject: Request for information\n\nDear Madam, Sir,"],["Marseille, le 8 janvier 2025\n\nÀ l'attention de Monsieur le Directeur,","Marseille, 8 January 2025\n\nFor the attention of the Director,"],["Bordeaux, le 20 avril 2025\n\nBonjour Thomas,","Bordeaux, 20 April 2025\n\nHello Thomas,"],["Toulouse, le 1er septembre 2025\n\nChère amie,","Toulouse, 1 September 2025\n\nDear friend,"],["Nice, le 7 juillet 2025\n\nObjet : Candidature au poste\n\nMadame, Monsieur,","Nice, 7 July 2025\n\nSubject: Application for the position\n\nDear Madam, Sir,"],["Strasbourg, le 22 novembre 2025\n\nMadame la Directrice,","Strasbourg, 22 November 2025\n\nDear Director,"],["Nantes, le 14 février 2025\n\nÀ qui de droit,","Nantes, 14 February 2025\n\nTo whom it may concern,"],["Québec, le 30 mai 2025\n\nSalut Léa !","Quebec, 30 May 2025\n\nHi Léa!"]]},"signoff":{"label":"STEP 7 — Formule de politesse (Lettre)","tip":"End with a formal or semi-formal closing + full signature.","opts":[["Veuillez agréer, Madame, mes salutations distinguées.\nClaire Dubois","Please accept, Madam, my distinguished greetings.\nClaire Dubois"],["Dans l'attente de votre réponse, je vous adresse mes cordiales salutations.\nPaul Martin","Awaiting your reply, I send you my cordial greetings.\nPaul Martin"],["Cordialement,\nSophie Laurent","Kind regards,\nSophie Laurent"],["Bien cordialement,\nMarco Ferretti","Kind regards,\nMarco Ferretti"],["Avec mes sincères salutations,\nAmélie Rousseau","With my sincere greetings,\nAmélie Rousseau"],["Je vous adresse mes meilleures salutations.\nKevin Bonnet","I send you my best greetings.\nKevin Bonnet"],["À bientôt et amicalement,\nNadia","See you soon and warmly,\nNadia"],["Grosses bises et à très bientôt !\nLéa","Big kisses and see you very soon!\nLéa"],["En espérant vous lire prochainement, bien à vous.\nLucas Bernard","Hoping to hear from you soon, yours sincerely.\nLucas Bernard"],["Avec toute mon amitié,\nJulie","With all my friendship,\nJulie"]]}},"Témoignage (site/forum)":{"header":{"label":"STEP 0 — Titre du témoignage","tip":"Write a direct, honest title that captures your experience. Be specific — what happened and what did you learn?","opts":[["Ce que cette expérience m'a vraiment appris — bilan sincère","What this experience truly taught me — sincere assessment"],["Mon témoignage honnête : ni tout rose ni tout noir","My honest testimony: neither all rosy nor all dark"],["J'ai vécu cette situation — voici ce que j'en retiens vraiment","I lived this situation — here is what I truly take from it"],["Pour aider ceux qui hésitent : mon retour d'expérience complet","To help those who are hesitating: my complete feedback"],["Une expérience qui m'a profondément marqué(e) — je vous raconte","An experience that profoundly marked me — I am telling you about it"],["Ce que personne ne vous dit avant de se lancer — je l'ai vécu","What nobody tells you before starting — I lived it"],["Honnêtement sur cette expérience : le bon, le difficile et l'essentiel","Honestly about this experience: the good, the difficult and the essential"],["Mon parcours en quelques mots — pour inspirer ou aider","My journey in a few words — to inspire or help"],["Six mois après : mon bilan personnel sur cette aventure","Six months later: my personal assessment of this adventure"],["Ce témoignage est pour ceux qui traversent la même chose que moi","This testimony is for those going through the same thing as me"]]},"signoff":{"label":"STEP 7 — Signature du témoignage","tip":"End with your first name and an invitation to share or ask questions.","opts":[["J'espère que mon témoignage vous sera utile. N'hésitez pas à poser vos questions ici.\nClaire","I hope my testimony will be useful to you. Do not hesitate to ask your questions here.\nClaire"],["Si vous avez vécu quelque chose de similaire, partagez votre expérience.\nPaul","If you have lived something similar, share your experience.\nPaul"],["Merci de m'avoir lu. Je reste disponible pour tout échange dans les commentaires.\nSophie","Thank you for reading. I remain available for any exchange in the comments.\nSophie"],["N'hésitez pas à commenter — chaque témoignage aide quelqu'un d'autre.\nMarco","Do not hesitate to comment — every testimony helps someone else.\nMarco"],["Bon courage à tous ceux qui traversent la même situation.\nAmélie","Good courage to all those going through the same situation.\nAmélie"],["Je suis là pour répondre à vos questions dans les commentaires.\nKevin","I am here to answer your questions in the comments.\nKevin"],["Merci pour votre lecture et votre soutien sur ce site.\nNadia","Thank you for your reading and your support on this site.\nNadia"],["J'espère avoir aidé. N'hésitez pas à partager ce témoignage.\nLucas","I hope to have helped. Do not hesitate to share this testimony.\nLucas"],["Prenez soin de vous et bon courage à tous.\nJulie","Take care of yourselves and good courage to all.\nJulie"],["À bientôt sur ce site pour d'autres témoignages.\nThomas","See you soon on this site for more testimonies.\nThomas"]]}},"Forum / Discussion":{"header":{"label":"STEP 0 — Salutation du forum","tip":"Open with a warm community greeting + a brief context sentence explaining who you are or why you are posting.","opts":[["Bonjour à tous ! Je suis nouveau/nouvelle sur ce forum et je voulais partager mon expérience personnelle.","Hello everyone! I am new to this forum and I wanted to share my personal experience."],["Bonjour à toutes et à tous ! Je réponds à la question posée avec mon témoignage honnête et complet.","Hello everyone! I am responding to the question asked with my honest and complete testimony."],["Salut la communauté ! Je lis ce forum depuis plusieurs mois et je me lance enfin dans un premier message.","Hi community! I have been reading this forum for several months and I am finally posting for the first time."],["Bonjour ! Je m'appelle Claire et je voulais partager quelque chose qui pourrait aider certains d'entre vous.","Hello! My name is Claire and I wanted to share something that could help some of you."],["Bonsoir à tous ! En réponse à ce sujet, voici mon témoignage honnête après plusieurs mois de réflexion.","Good evening everyone! In response to this topic, here is my honest testimony after several months of reflection."],["Bonjour la communauté ! Je me permets de partager mon vécu sur cette question qui me tient vraiment à cœur.","Hello community! I am taking the liberty of sharing my experience on this question that is truly close to my heart."],["Salut ! Je voulais répondre à ce post car mon expérience pourrait vraiment aider certains d'entre vous ici.","Hi! I wanted to respond to this post as my experience could truly help some of you here."],["Bonjour à tous les membres ! Voici ma modeste contribution au débat lancé ici il y a quelques jours.","Hello to all members! Here is my modest contribution to the debate launched here a few days ago."],["Bonjour ! Après avoir lu vos témoignages inspirants, j'ai décidé de partager le mien à mon tour aujourd'hui.","Hello! After reading your inspiring testimonies, I decided to share mine in turn today."],["Salut tout le monde ! Je réponds à cette discussion car je pense avoir un retour utile à partager avec vous.","Hi everyone! I am responding to this discussion because I think I have useful feedback to share with you."]]},"signoff":{"label":"STEP 7 — Clôture du message de forum","tip":"End by inviting others to share and sign with your name or username.","opts":[["J'espère que ça aide ! N'hésitez pas à partager vos propres expériences ci-dessous.\nClaire","I hope that helps! Do not hesitate to share your own experiences below.\nClaire"],["Partagez votre vécu — on apprend tous les uns des autres sur ce forum.\nPaul","Share your experience — we all learn from each other on this forum.\nPaul"],["Bon courage à tous et n'abandonnez pas ! Je reste disponible pour répondre.\nSophie","Good courage to all and do not give up! I remain available to respond.\nSophie"],["Je reste disponible pour répondre à vos questions ici dans les commentaires.\nMarco","I remain available to answer your questions here in the comments.\nMarco"],["À bientôt sur ce forum pour d'autres échanges enrichissants.\nAmélie","See you soon on this forum for more enriching exchanges.\nAmélie"],["Merci pour cette belle communauté qui donne envie de partager et d'échanger.\nKevin","Thank you for this wonderful community that makes you want to share and exchange.\nKevin"],["N'hésitez pas à me contacter en message privé si besoin.\nNadia","Do not hesitate to contact me by private message if needed.\nNadia"],["Bonne chance à tous dans vos démarches ! On est là pour s'entraider.\nLucas","Good luck to all in your endeavours! We are here to help each other.\nLucas"],["Je reviendrai partager la suite de mon expérience prochainement sur ce forum.\nJulie","I will come back to share the next part of my experience soon on this forum.\nJulie"],["Merci de m'avoir lu et à bientôt dans ce beau forum d'échange !\nThomas","Thank you for reading and see you soon in this wonderful forum!\nThomas"]]}}},"e3":{"Essai argumentatif":{"header":{"label":"STEP 0 — Titre de l'essai","tip":"Write a clear, balanced title introducing the debate. Save your opinion for the body.","opts":[["Entre liberté individuelle et responsabilité collective : un équilibre nécessaire","Between individual freedom and collective responsibility: a necessary balance"],["Un défi de notre époque : analyse et prise de position","A challenge of our era: analysis and position-taking"],["Enjeux contemporains : ce que ce débat révèle de notre société","Contemporary issues: what this debate reveals about our society"],["Pour une approche nuancée et responsable d'une question cruciale","For a nuanced and responsible approach to a crucial question"],["Ni tout noir ni tout blanc : réflexion sur un sujet complexe","Neither all black nor all white: reflection on a complex subject"],["Ce que nous dit ce débat sur nos valeurs collectives","What this debate tells us about our collective values"],["Entre certitudes et nuances : une analyse honnête et argumentée","Between certainties and nuances: an honest and argued analysis"],["Un enjeu fondamental que notre société ne peut plus ignorer","A fundamental issue our society can no longer ignore"],["Droits, devoirs et réalités : regards croisés sur cette question","Rights, duties and realities: cross perspectives on this question"],["Réflexion citoyenne sur l'un des grands débats de notre temps","Civic reflection on one of the great debates of our time"]]},"signoff":{"label":"STEP 7 — Signature (Essai)","tip":"Sign with your name. A brief note can be added if writing for a publication.","opts":[["Claire Dubois","Claire Dubois"],["Paul Martin — Étudiant en sciences politiques","Paul Martin — Political science student"],["Sophie Laurent, citoyenne engagée","Sophie Laurent, engaged citizen"],["Ces réflexions n'engagent que leur auteure. Marco Ferretti","These reflections engage only their author. Marco Ferretti"],["Amélie Rousseau — Rédigé dans le cadre d'un cours de français","Amélie Rousseau — Written as part of a French class"],["Rédigé par Kevin Bonnet","Written by Kevin Bonnet"],["Nadia Karim — Toute réaction constructive est bienvenue","Nadia Karim — All constructive feedback is welcome"],["Par Lucas Bernard | Juin 2025","By Lucas Bernard | June 2025"],["Julie Moreau — Auteure de cet essai","Julie Moreau — Author of this essay"],["Thomas Girard reste disponible pour tout échange sur ce sujet","Thomas Girard remains available for any exchange on this subject"]]}},"Article d'opinion":{"header":{"label":"STEP 0 — Titre de l'article d'opinion","tip":"Write a strong opinionated title that signals your position immediately.","opts":[["Il est temps de prendre position et d'agir — voici pourquoi","It is time to take a position and act — here is why"],["Ce que je crois vraiment sur ce sujet — et pourquoi je l'assume","What I truly believe about this subject — and why I own it"],["Arrêtons de tergiverser : une décision collective s'impose maintenant","Let us stop dithering: a collective decision is needed now"],["Oui, je pense que nous faisons fausse route — voici mes arguments","Yes, I think we are on the wrong track — here are my arguments"],["Plaidoyer pour une approche plus ambitieuse et plus juste","Plea for a more ambitious and more just approach"],["J'ai changé d'avis sur ce sujet — voici ce qui m'a convaincu","I changed my mind on this subject — here is what convinced me"],["Mon opinion tranchée sur un sujet qui ne l'admet pas facilement","My clear-cut opinion on a subject that does not easily admit it"],["Ce que personne n'ose dire — et que je dis quand même","What nobody dares to say — and which I say anyway"],["Pourquoi je suis convaincu(e) que nous devons agir différemment","Why I am convinced that we must act differently"],["Une position peut-être impopulaire mais que j'assume pleinement","A perhaps unpopular position but one I fully assume"]]},"signoff":{"label":"STEP 7 — Signature (Article d'opinion)","tip":"Sign with name and a note that this is a personal opinion.","opts":[["Claire Dubois — Tribune libre","Claire Dubois — Free opinion piece"],["Opinion personnelle de Paul Martin","Personal opinion of Paul Martin"],["Sophie Laurent — Les opinions exprimées sont les siennes","Sophie Laurent — Opinions expressed are her own"],["Par Marco Ferretti | Réactions bienvenues","By Marco Ferretti | Reactions welcome"],["Amélie Rousseau assume entièrement cette prise de position","Amélie Rousseau fully assumes this position"],["Signé : Kevin Bonnet","Signed: Kevin Bonnet"],["Nadia Karim — À lire, débattre et contester si vous le souhaitez","Nadia Karim — To read, debate and contest if you wish"],["Lucas Bernard — Citoyen qui s'exprime librement","Lucas Bernard — Citizen speaking freely"],["Ces opinions n'engagent que Julie Moreau","These opinions engage only Julie Moreau"],["Thomas Girard — Contributeur indépendant","Thomas Girard — Independent contributor"]]}},"Article de journal / presse":{"header":{"label":"STEP 0 — Titre et chapeau (Presse)","tip":"Write a headline + one-sentence standfirst underneath. The standfirst summarises the article's key angle.","opts":[["Une réalité que l'on ne peut plus ignorer\n\nEntre chiffres alarmants et solutions prometteuses, notre enquête fait le point.","A reality we can no longer ignore\n\nBetween alarming figures and promising solutions, our investigation takes stock."],["Le grand tournant\n\nCe sujet s'impose désormais au cœur du débat public national et international.","The great turning point\n\nThis subject now places itself at the heart of the national and international public debate."],["Ils changent les règles\n\nDes initiatives locales prouvent que le changement est possible quand on s'y met vraiment.","They change the rules\n\nLocal initiatives prove that change is possible when people truly commit to it."],["Ce que disent vraiment les experts\n\nNotre journaliste a rencontré des spécialistes pour démêler le vrai du faux sur ce sujet.","What the experts really say\n\nOur journalist met specialists to separate fact from fiction on this subject."],["La fracture qui grandit\n\nUne société divisée face à un enjeu qui concerne pourtant chacun d'entre nous.","The growing divide\n\nA divided society faced with an issue that nevertheless concerns each and every one of us."],["Derrière les chiffres, des visages\n\nDes témoignages exclusifs humanisent un débat trop souvent réduit à des statistiques.","Behind the figures, faces\n\nExclusive testimonies humanise a debate too often reduced to statistics."],["Urgence : le compte à rebours a commencé\n\nLes experts sont formels : sans action immédiate, les conséquences seront lourdes.","Urgency: the countdown has begun\n\nExperts are clear: without immediate action, the consequences will be severe."],["Enquête : ce que l'on cache au grand public\n\nNotre rédaction révèle des aspects méconnus d'une réalité pourtant omniprésente.","Investigation: what is being hidden from the general public\n\nOur editorial team reveals little-known aspects of an otherwise omnipresent reality."],["Le modèle qui fait ses preuves\n\nIls ont osé faire différemment. Résultat : un succès que l'on devrait s'inspirer d'urgence.","The model that is proving itself\n\nThey dared to do things differently. Result: a success we should urgently draw inspiration from."],["Demain, une autre réalité ?\n\nLes tendances actuelles dessinent un avenir radicalement différent de notre quotidien d'aujourd'hui.","Tomorrow, a different reality?\n\nCurrent trends are sketching a future radically different from our daily life today."]]},"signoff":{"label":"STEP 7 — Signature journalistique","tip":"End with author name, role and publication date.","opts":[["Claire Dubois, journaliste | 12 juin 2025","Claire Dubois, journalist | 12 June 2025"],["Par Paul Martin — Correspondant société","By Paul Martin — Society correspondent"],["Sophie Laurent — Rédaction du Monde Francophone","Sophie Laurent — Editorial team of Le Monde Francophone"],["Texte et enquête : Marco Ferretti","Text and investigation: Marco Ferretti"],["Amélie Rousseau couvre les questions sociales. Contact : a.rousseau@journal.fr","Amélie Rousseau covers social issues. Contact: a.rousseau@journal.fr"],["Article de Kevin Bonnet | Toute reproduction soumise à autorisation","Article by Kevin Bonnet | Any reproduction subject to authorisation"],["Nadia Karim — Grand reporter | Publié le 12 juin 2025","Nadia Karim — Senior reporter | Published 12 June 2025"],["Reportage : Lucas Bernard | Crédit photo : Archives","Report: Lucas Bernard | Photo credit: Archives"],["Julie Moreau — auteure de plusieurs enquêtes sur ce sujet","Julie Moreau — author of several investigations on this subject"],["Par Thomas Girard — cet article a été relu par notre comité éditorial","By Thomas Girard — this article has been reviewed by our editorial committee"]]}},"Lettre ouverte":{"header":{"label":"STEP 0 — En-tête de la lettre ouverte","tip":"Address a specific person or group. Open letters have a named recipient and are meant for public reading.","opts":[["Madame la Ministre de l'Environnement,","Dear Minister for the Environment,"],["Monsieur le Maire de notre ville,","Dear Mayor of our city,"],["Mesdames et Messieurs les élus de notre assemblée,","Dear elected representatives of our assembly,"],["À toutes les personnes qui ont le pouvoir d'agir sur ce sujet crucial,","To all persons with the power to act on this crucial subject,"],["Chers concitoyens et chères concitoyennes,","Dear fellow citizens,"],["Madame la Présidente du conseil d'administration,","Dear Chair of the board of directors,"],["À la direction de notre établissement scolaire,","To the management of our school,"],["Aux décideurs politiques et économiques concernés,","To the political and economic decision-makers concerned,"],["Monsieur le Directeur général de l'agence nationale,","Dear Director General of the national agency,"],["À toutes celles et ceux qui peuvent encore faire changer les choses,","To all those who can still make things change,"]]},"signoff":{"label":"STEP 7 — Clôture de la lettre ouverte","tip":"End with a formal closing + signature. Mention co-signatories if relevant.","opts":[["Veuillez agréer, Madame la Ministre, l'expression de nos respectueuses salutations.\nClaire Dubois et 47 cosignataires","Please accept, Dear Minister, the expression of our respectful greetings.\nClaire Dubois and 47 co-signatories"],["Dans l'espoir que cette lettre retiendra votre attention, nous vous adressons nos sincères salutations.\nPaul Martin","Hoping this letter will merit your attention, we send you our sincere greetings.\nPaul Martin"],["Nous comptons sur votre engagement et votre sens des responsabilités.\nCordialement, Sophie Laurent","We are counting on your commitment and sense of responsibility.\nKind regards, Sophie Laurent"],["En espérant une réponse rapide et constructive.\nMarco Ferretti — Au nom du collectif citoyen","Hoping for a quick and constructive response.\nMarco Ferretti — On behalf of the citizens' collective"],["Nous restons disponibles pour toute rencontre ou échange à votre initiative.\nRespectueusement, Amélie Rousseau","We remain available for any meeting or exchange at your initiative.\nRespectfully, Amélie Rousseau"],["Cette lettre est ouverte à toutes les signatures. Rejoignez notre appel.\nKevin Bonnet","This letter is open to all signatures. Join our appeal.\nKevin Bonnet"],["Nous vous remercions de l'attention portée à cette lettre ouverte.\nBien cordialement, Nadia Karim","We thank you for the attention given to this open letter.\nKind regards, Nadia Karim"],["Dans l'attente d'une réponse à la hauteur des enjeux soulevés.\nLucas Bernard et les cosignataires","Awaiting a response commensurate with the issues raised.\nLucas Bernard and co-signatories"],["Nous vous adressons nos salutations citoyennes et résolument engagées.\nJulie Moreau","We send you our civic and resolutely committed greetings.\nJulie Moreau"],["Veuillez prendre connaissance de notre demande avec toute l'attention qu'elle mérite.\nThomas Girard","Please take note of our request with all the attention it deserves.\nThomas Girard"]]}}}};
+
+function getCurrentTaskKey(){
+  if(!currentKey) return null;
+  return currentKey; // e1, e2, e3, o1, o2, o3
+}
+
+// originalData: deep clone of DATA taken when task opens — never mutated
+var originalData = null;
+
+function cloneData(){
+  originalData = JSON.parse(JSON.stringify(DATA));
+}
+
+// Returns the step to display — applies qtype overlay without mutating DATA
+function getStep(t,s){
+  var topic=originalData?originalData[t]:DATA[t];
+  if(!topic)return null;
+  return topic.steps[s];
+}
+
+function applyQtypeFormat(){
+  // No-op: overlay is applied live in getStep() — DATA is never mutated
+}
+
+function populateQtypeFilter(){
+  const sel=document.getElementById('sqtype');
+  if(!sel) return;
+  const cur=sel.value;
+  sel.innerHTML='<option value="">— Original format —</option>';
+  const taskKey=getCurrentTaskKey();
+  if(taskKey&&QTYPE_STEPS[taskKey]){
+    Object.keys(QTYPE_STEPS[taskKey]).forEach(type=>{
+      const o=document.createElement('option');
+      o.value=type; o.textContent=type;
+      sel.appendChild(o);
+    });
+  }
+  if([...sel.options].some(o=>o.value===cur)) sel.value=cur;
+}
+
+function populateTopics(){
+  const s=document.getElementById('stopic'); s.innerHTML='';
+  DATA.forEach((t,i)=>{
+    const o=document.createElement('option');
+    o.value=i;
+    o.textContent=(i+1)+'. '+t.title;
+    s.appendChild(o);
+  });
+  s.value=T;
+  const ct=document.getElementById('qtype-count');
+  if(ct) ct.textContent=DATA.length+' topics';
+}
+function populateSteps(){
+  const s=document.getElementById('sstep'); s.innerHTML='';
+  const topic = originalData ? originalData[T] : DATA[T];
+  topic.steps.forEach((st,i)=>{
+    const step=getStep(T,i);
+    const o=document.createElement('option');
+    o.value=i;
+    o.textContent='S'+(i+1)+' — '+step.label;
+    s.appendChild(o);
+  });
+  s.value=S;
+}
+
+// ─── Lang switch ─────────────────────────────────────────────────────────────
+const LMODES=['both','fr','en'];
+const LLBLS=['🔁 FR→EN','🇫🇷 FR only','🇬🇧 EN only'];
+document.getElementById('blsw').addEventListener('click',()=>{
+  const sl=document.getElementById('slang');
+  const nx=(LMODES.indexOf(sl.value)+1)%LMODES.length;
+  sl.value=LMODES[nx];
+  document.getElementById('blsw').textContent=LLBLS[nx];
+  if(session) doPlay(); // restart with new lang
+});
+document.getElementById('slang').addEventListener('change',()=>{
+  const cur=LMODES.indexOf(document.getElementById('slang').value);
+  document.getElementById('blsw').textContent=LLBLS[cur>=0?cur:0];
+});
+
+// ─── Volume (handled by initVol3) ──────────────────────────────────────────
+
+// ─── Button events ────────────────────────────────────────────────────────────
+document.getElementById('bplay').addEventListener('click',()=>{
+  const state=document.getElementById('bplay').dataset.s||'idle';
+  if(state==='idle')         doPlay();
+  else if(state==='playing') doPause();
+  else if(state==='paused')  doResume();
+});
+document.getElementById('bstop').addEventListener('click', doStop);
+document.getElementById('bauto').addEventListener('click',()=>{ if(autoMode) doStop(); else startAuto(); });
+document.getElementById('bprev').addEventListener('click',()=>{
+  doStop();
+  revealedThisItem=false;
+  const qtypes=getAutoQtypes();
+  const curQsel=document.getElementById('sqtype');
+  const curQ=curQsel?curQsel.value:'';
+  const curQI=qtypes.indexOf(curQ)<0?0:qtypes.indexOf(curQ);
+
+  if(O>0){
+    O--;
+  } else if(S>0){
+    S--; document.getElementById('sstep').value=S; O=getStep(T,S).opts.length-1;
+  } else if(curQI>0){
+    // go back to previous question type, last step last option
+    const prevQI=curQI-1;
+    setQtype(qtypes[prevQI]);
+    const topicRef=originalData?originalData[T]:DATA[T];
+    S=topicRef.steps.length-1;
+    document.getElementById('sstep').value=S;
+    O=getStep(T,S).opts.length-1;
+  } else if(T>0){
+    T--;
+    document.getElementById('stopic').value=T;
+    populateSteps();
+    setQtype(qtypes[qtypes.length-1]);
+    const topicRef=originalData?originalData[T]:DATA[T];
+    S=topicRef.steps.length-1;
+    document.getElementById('sstep').value=S;
+    O=getStep(T,S).opts.length-1;
+  }
+  render();
+});
+document.getElementById('bnext').addEventListener('click',()=>{
+  doStop();
+  revealedThisItem=false;
+  const step=getStep(T,S);
+  const topicRef=originalData?originalData[T]:DATA[T];
+  const qtypes=getAutoQtypes();
+  // current qtype index
+  const curQsel=document.getElementById('sqtype');
+  const curQ=curQsel?curQsel.value:'';
+  const curQI=qtypes.indexOf(curQ)<0?0:qtypes.indexOf(curQ);
+
+  if(O<step.opts.length-1){
+    O++;
+  } else if(S<topicRef.steps.length-1){
+    S++; document.getElementById('sstep').value=S; O=0;
+  } else if(curQI<qtypes.length-1){
+    // advance to next question type, reset step+option
+    const nextQI=curQI+1;
+    setQtype(qtypes[nextQI]);
+    S=0; O=0;
+    document.getElementById('sstep').value=0;
+  } else if(T<DATA.length-1){
+    // advance to next topic, reset qtype+step+option
+    T++; S=0; O=0;
+    setQtype(qtypes[0]);
+    document.getElementById('stopic').value=T;
+    populateSteps();
+  }
+  render();
+});
+document.getElementById('stopic').addEventListener('change',e=>{ doStop(); T=+e.target.value; O=0; revealedThisItem=false; populateSteps(); render(); if(tmplVisible){tmplSlotIndices={};renderTemplate();} });
+document.getElementById('sqtype').addEventListener('change',()=>{
+  doStop(); O=0;
+  // do NOT reset T or S — just re-render with new format overlay
+  populateSteps(); render();
+});
+document.getElementById('sstep').addEventListener('change',e=>{ doStop(); S=+e.target.value; O=0; revealedThisItem=false; render(); if(tmplVisible){tmplSlotIndices={};renderTemplate();} });
+document.getElementById('pfr').addEventListener('change',()=>{ checkWarn(); doStop(); });
+document.getElementById('pen').addEventListener('change',()=>{ checkWarn(); doStop(); });
+
+// ─── Init ─────────────────────────────────────────────────────────────────────
+// init deferred
+
+// ── PWA Install prompt ───────────────────────────────────────────────────
+let deferredInstallPrompt=null;
+window.addEventListener('beforeinstallprompt',e=>{
+  e.preventDefault();
+  deferredInstallPrompt=e;
+  const banner=document.getElementById('install-banner');
+  if(banner) banner.classList.add('show');
+});
+window.addEventListener('appinstalled',()=>{
+  const banner=document.getElementById('install-banner');
+  if(banner) banner.classList.remove('show');
+  deferredInstallPrompt=null;
+});
+const installBtn=document.getElementById('install-btn');
+if(installBtn){
+  installBtn.addEventListener('click',async()=>{
+    if(!deferredInstallPrompt) return;
+    deferredInstallPrompt.prompt();
+    const {outcome}=await deferredInstallPrompt.userChoice;
+    if(outcome==='accepted') deferredInstallPrompt=null;
+  });
+}
+const installClose=document.getElementById('install-close');
+if(installClose){
+  installClose.addEventListener('click',()=>{
+    const banner=document.getElementById('install-banner');
+    if(banner) banner.classList.remove('show');
+  });
+}
+
+// iOS Safari install hint (no beforeinstallprompt on iOS)
+const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+const isStandalone=('standalone' in navigator && navigator.standalone);
+if(isIOS && !isStandalone){
+  const banner=document.getElementById('install-banner');
+  const txt=document.querySelector('.install-txt');
+  const btn=document.getElementById('install-btn');
+  if(banner && txt && btn){
+    txt.innerHTML='<strong>Add to Home Screen</strong><br>Tap the share button ↑ then "Add to Home Screen"';
+    btn.style.display='none';
+    banner.classList.add('show');
+  }
+}
+
+// ── Service Worker registration ───────────────────────────────────────────
+if('serviceWorker' in navigator){
+  // Inline SW as blob so it works from a local file too
+  const swCode=`
+self.addEventListener('install',e=>self.skipWaiting());
+self.addEventListener('activate',e=>self.clients.claim());
+self.addEventListener('fetch',e=>{
+  e.respondWith(
+    caches.open('tcf-v1').then(cache=>
+      cache.match(e.request).then(cached=>{
+        const fresh=fetch(e.request).then(r=>{cache.put(e.request,r.clone());return r;}).catch(()=>cached);
+        return cached||fresh;
+      })
+    )
+  );
+});
+`;
+  const blob=new Blob([swCode],{type:'application/javascript'});
+  const url=URL.createObjectURL(blob);
+  navigator.serviceWorker.register(url).then(()=>{
+    URL.revokeObjectURL(url);
+  }).catch(()=>{});
+}
+
+// ── Voice loading — iOS Safari needs polling ─────────────────────────────
+// iOS: getVoices() returns [] on first call, onvoiceschanged fires late or never.
+// Fix: poll every 200ms for up to 10 seconds, stop as soon as voices appear.
+function loadVoices(){
+  if(!window.speechSynthesis) return;
+
+  // Attempt 1: already loaded (desktop Chrome/Firefox)
+  const immediate=speechSynthesis.getVoices();
+  if(immediate.length){ populateVoicePickers(); return; }
+
+  // Attempt 2: onvoiceschanged (works on some browsers)
+  speechSynthesis.onvoiceschanged=()=>{
+    const v=speechSynthesis.getVoices();
+    if(v.length) populateVoicePickers();
+  };
+
+  // Attempt 3: poll (required for iOS Safari)
+  let tries=0;
+  const MAX=50; // 50 × 200ms = 10 seconds
+  const poll=setInterval(()=>{
+    tries++;
+    const v=speechSynthesis.getVoices();
+    if(v.length){
+      clearInterval(poll);
+      populateVoicePickers();
+      return;
+    }
+    // iOS sometimes needs a dummy utterance to kick the voice engine awake
+    if(tries===3){
+      const wake=new SpeechSynthesisUtterance('');
+      wake.volume=0;
+      try{ speechSynthesis.speak(wake); speechSynthesis.cancel(); }catch(e){}
+    }
+    if(tries>=MAX){
+      clearInterval(poll);
+      document.getElementById('vstatus').textContent=
+        'No voices found. On iPhone: Settings → Accessibility → Spoken Content → Voices → French → download Amélie. Then reopen this page.';
+    }
+  },200);
+}
+
+
+
+// Patch markHeard to also persist cross-task progress
+// Uses arrow function to avoid hoisting conflict with the original function declaration
+var _origMarkHeard=markHeard;
+markHeard=function(t,s,o){
+  _origMarkHeard(t,s,o);
+  if(currentKey){
+    if(!progress[currentKey])progress[currentKey]={};
+    if(!progress[currentKey][t])progress[currentKey][t]={};
+    if(!progress[currentKey][t][s])progress[currentKey][t][s]={};
+    progress[currentKey][t][s][o]=true;
+    saveProg();
+    var h=countHeard(currentKey);
+    var f=document.getElementById('fill-'+currentKey);
+    if(f)f.style.width=(COUNTS[currentKey]?Math.round(h/COUNTS[currentKey]*100):0)+'%';
+    var l=document.getElementById('heard-'+currentKey);
+    if(l)l.textContent=h+' heard';
+  }
+};
+
+
+// ── Word tap translation ─────────────────────────────────────────────────────
+var wordCache={};   // cache: "word_context" -> translation
+var tooltipEl=null;
+var activeWord=null;
+
+function wrapWords(frText, enText){
+  var enc=encodeURIComponent(enText);
+  return frText.replace(/S+/g, function(word){
+    var safe=word.replace(/"/g,'&quot;');
+    return '<span class="sfr-word" data-w="'+safe+'" data-e="'+enc+'">'+word+'</span>';
+  });
+}
+
+function initWordTooltip(){
+  tooltipEl=document.getElementById('word-tooltip');
+  if(!tooltipEl) return;
+
+  document.addEventListener('click', function(e){
+    const span=e.target.closest('.sfr-word');
+    if(!span){
+      hideTooltip();
+      return;
+    }
+    e.stopPropagation();
+    const word=span.dataset.w;
+    const enSentence=decodeURIComponent(span.dataset.e);
+    showTooltip(span, word, enSentence);
+  });
+
+  document.addEventListener('touchstart', function(e){
+    const span=e.target.closest('.sfr-word');
+    if(!span){ hideTooltip(); return; }
+  }, {passive:true});
+}
+
+function showTooltip(span, word, enSentence){
+  if(!tooltipEl) return;
+  if(activeWord) activeWord.classList.remove('tapped');
+  activeWord=span;
+  span.classList.add('tapped');
+
+  const wtFr=document.getElementById('wt-fr');
+  const wtEn=document.getElementById('wt-en');
+  wtFr.textContent=word;
+  wtEn.textContent='...';
+  wtEn.className='wt-loading';
+
+  // Position tooltip above the tapped word
+  const rect=span.getBoundingClientRect();
+  const ttW=220;
+  let left=rect.left+rect.width/2-ttW/2;
+  if(left<8) left=8;
+  if(left+ttW>window.innerWidth-8) left=window.innerWidth-ttW-8;
+  let top=rect.top-80;
+  if(top<60) top=rect.bottom+8;
+  tooltipEl.style.left=left+'px';
+  tooltipEl.style.top=top+'px';
+  tooltipEl.style.width=ttW+'px';
+  tooltipEl.classList.add('show');
+
+  // Look up translation
+  translateWord(word, enSentence, function(translation){
+    if(!tooltipEl.classList.contains('show')) return;
+    wtEn.textContent=translation;
+    wtEn.className='wt-en';
+  });
+}
+
+function hideTooltip(){
+  if(!tooltipEl) return;
+  tooltipEl.classList.remove('show');
+  if(activeWord){ activeWord.classList.remove('tapped'); activeWord=null; }
+}
+
+function _myTranslate(text,cb){
+  if(!text||!text.trim()){cb('');return;}
+  fetch('https://api.mymemory.translated.net/get?q='+encodeURIComponent(text.trim())+'&langpair=fr%7Cen')
+    .then(r=>r.json()).then(d=>{
+      var t=(d.responseData&&d.responseData.translatedText)||text;
+      if(t===t.toUpperCase()&&t.length>3)t=t.charAt(0).toUpperCase()+t.slice(1).toLowerCase();
+      cb(t);
+    }).catch(function(){cb(text);});
+}
+function translateWord(word,context,cb){
+  var clean=word.replace(/[''«»""„".,;:!?()\[\]{}<>…–—]/g,'').toLowerCase();
+  var cacheKey=clean+'|'+(context||'').slice(0,30);
+  if(wordCache[cacheKey]){cb(wordCache[cacheKey]);return;}
+  _myTranslate(clean,function(t){wordCache[cacheKey]=t;cb(t);});
+}
+
+function initEQ(){
+  try {
+    eqCtx = new (window.AudioContext || window.webkitAudioContext)();
+    // Low shelf: boost/cut below 300Hz
+    eqLow = eqCtx.createBiquadFilter();
+    eqLow.type = 'lowshelf';
+    eqLow.frequency.value = 300;
+    eqLow.gain.value = 0;
+    // Mid peaking: centre around 1kHz
+    eqMid = eqCtx.createBiquadFilter();
+    eqMid.type = 'peaking';
+    eqMid.frequency.value = 1000;
+    eqMid.Q.value = 1;
+    eqMid.gain.value = 0;
+    // High shelf: boost/cut above 3kHz
+    eqHigh = eqCtx.createBiquadFilter();
+    eqHigh.type = 'highshelf';
+    eqHigh.frequency.value = 3000;
+    eqHigh.gain.value = 0;
+    // Chain: low → mid → high → destination
+    eqLow.connect(eqMid);
+    eqMid.connect(eqHigh);
+    eqHigh.connect(eqCtx.destination);
+    eqReady = true;
+    console.log('EQ ready');
+  } catch(e) {
+    console.warn('EQ not available:', e.message);
+    eqReady = false;
+  }
+}
+
+function applyEQToUtterance(u){
+  // On browsers that support it, route utterance audio through EQ chain
+  // This works on Chrome desktop; iOS Safari doesn't allow this interception
+  if(!eqReady || !eqCtx) return;
+  try {
+    if(eqCtx.state === 'suspended') eqCtx.resume();
+  } catch(e){}
+}
+
+function getEQValues(){
+  return {
+    low:  parseFloat(document.getElementById('eq-low')?.value  || 0),
+    mid:  parseFloat(document.getElementById('eq-mid')?.value  || 0),
+    high: parseFloat(document.getElementById('eq-high')?.value || 0)
+  };
+}
+
+function updateEQFilters(){
+  const v = getEQValues();
+  if(eqLow)  eqLow.gain.value  = v.low;
+  if(eqMid)  eqMid.gain.value  = v.mid;
+  if(eqHigh) eqHigh.gain.value = v.high;
+  // Update display labels
+  const lv=document.getElementById('eq-low-val');
+  const mv=document.getElementById('eq-mid-val');
+  const hv=document.getElementById('eq-high-val');
+  if(lv) lv.textContent=(v.low>0?'+':'')+v.low+'dB';
+  if(mv) mv.textContent=(v.mid>0?'+':'')+v.mid+'dB';
+  if(hv) hv.textContent=(v.high>0?'+':'')+v.high+'dB';
+  // Apply pitch/rate adjustments as a proxy EQ on browsers without audio interception
+  // Low boost → slightly warmer (small pitch decrease)
+  // High boost → slightly brighter (small pitch increase)
+  // Store for use in speakCurrent
+  // Map EQ to speech parameters — these are noticeable on all browsers/iOS
+  // High shelf → pitch up (brighter), Low shelf → pitch down (warmer)
+  // Net pitch offset: each dB = 0.04 units on the 0–2 scale
+  window._eqHigh = v.high;
+  window._eqLow  = v.low;
+  window._eqMid  = v.mid;
+  window._eqPitchAdj = (v.high - v.low) * 0.04;
+  window._eqVolAdj   = v.mid * 0.025; // mid boosts/cuts volume slightly
+}
+
+function initEQControls(){
+  initEQ();
+  ['eq-low','eq-mid','eq-high'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) el.addEventListener('input', updateEQFilters);
+  });
+  const reset=document.getElementById('eq-reset');
+  if(reset) reset.addEventListener('click',()=>{
+    ['eq-low','eq-mid','eq-high'].forEach(id=>{
+      const el=document.getElementById(id);
+      if(el) el.value=0;
+    });
+    updateEQFilters();
+  });
+  updateEQFilters();
+}
+
+
+// ── Blind / active-recall mode ───────────────────────────────────────────────
+var blindMode = 'off'; // 'off' | 'en' | 'fr' | 'both'
+var revealedThisItem = false;
+
+function setBlindMode(mode){
+  blindMode=mode;
+  revealedThisItem=false;
+  render();
+}
+
+function cycleBlindMode(){
+  const modes=['off','en','fr','both'];
+  const i=modes.indexOf(blindMode);
+  blindMode=modes[(i+1)%modes.length];
+  revealedThisItem=false;
+  const btn=document.getElementById('blind-toggle');
+  const labels={off:'👁 Blind: Off',en:'🙈 Blind: EN',fr:'🙈 Blind: FR',both:'🙈 Blind: Both'};
+  if(btn) btn.textContent=labels[blindMode];
+  render();
+}
+
+function applyBlindMode(){
+  const fe=document.getElementById('sfr');
+  const ee=document.getElementById('sen');
+  if(!fe||!ee) return;
+  fe.classList.remove('blind-hidden','revealed');
+  ee.classList.remove('blind-hidden','revealed');
+  if(blindMode==='en'||blindMode==='both'){
+    ee.classList.add('blind-hidden');
+    if(revealedThisItem) ee.classList.add('revealed');
+  }
+  if(blindMode==='fr'||blindMode==='both'){
+    fe.classList.add('blind-hidden');
+    if(revealedThisItem) fe.classList.add('revealed');
+  }
+}
+
+function revealBlind(e){
+  // Don't reveal if tapping a word span (word tooltip should still work)
+  if(e && e.target && e.target.closest('.sfr-word') && blindMode!=='fr' && blindMode!=='both') return;
+  revealedThisItem=true;
+  applyBlindMode();
+}
+
+function initBlindMode(){
+  const btn=document.getElementById('blind-toggle');
+  if(btn) btn.addEventListener('click', cycleBlindMode);
+  const fe=document.getElementById('sfr');
+  const ee=document.getElementById('sen');
+  if(fe) fe.addEventListener('click', revealBlind);
+  if(ee) ee.addEventListener('click', revealBlind);
+}
+
+
+// ── Template mode ─────────────────────────────────────────────────────────────
+var STEP_TEMPLATES={}; // loaded async
+;;;
+var TEMPLATES=STEP_TEMPLATES;;
+var tmplVisible=false;
+var tmplTask='e2_arg';
+var tmplIdx=0;
+var tmplSlotIndices={}; // {SLOT_NAME: currentIndex}
+
+function getTaskTemplates(){
+  var key=currentKey;
+  var taskTmpl=STEP_TEMPLATES[key];
+  if(!taskTmpl) return [];
+
+  var topicFr=null, topicEn=null;
+  if(DATA&&DATA[T]&&DATA[T].steps&&DATA[T].steps[S]){
+    var st=DATA[T].steps[S];
+    if(st.opts&&st.opts.length){
+      topicFr=st.opts.map(function(o){return o[0];});
+      topicEn=st.opts.map(function(o){return o[1]||o[0];});
+    }
+  }
+
+  return (taskTmpl[S]||taskTmpl[0]||[]).map(function(t){
+    if(!topicFr) return t;
+    var slotKeys=Object.keys(t.slots);
+    if(!slotKeys.length) return t;
+    // Put all topic sentences into the first (or only) slot
+    var k=slotKeys[0];
+    var newSlots={}, newSlotsEn={};
+    slotKeys.forEach(function(sk){ newSlots[sk]=t.slots[sk]; newSlotsEn[sk]=t.slots[sk]; });
+    newSlots[k]=topicFr;
+    newSlotsEn[k]=topicEn;
+    return {fr:t.fr, en:t.en||'', slots:newSlots, slotsEn:newSlotsEn};
+  });
+}
+
+// Currently open slot drawer
+var openSlot=null;
+
+function renderTemplate(){
+  const tmps=getTaskTemplates();
+  if(!tmps||!tmps.length) return;
+  if(tmplIdx>=tmps.length) tmplIdx=0;
+  const t=tmps[tmplIdx];
+  
+  // Close any open drawer when template changes
+  openSlot=null;
+  const drawer=document.getElementById('tmpl-opts-drawer');
+  if(drawer) drawer.innerHTML='';
+  
+  // Ensure slot indices exist
+  Object.keys(t.slots).forEach(k=>{ if(tmplSlotIndices[k]===undefined) tmplSlotIndices[k]=0; });
+  
+  // Build sentence HTML — replace ‹SLOT› with tappable chips
+  let fr=t.fr;
+  let en=t.en;
+  Object.entries(t.slots).forEach(([slot,opts])=>{
+    const idx=tmplSlotIndices[slot]||0;
+    const val=opts[idx%opts.length];
+    const chip=`<span class="tmpl-slot" data-slot="${slot}" data-idx="${idx}">${val}<span class="tmpl-slot-idx">${idx+1}/${opts.length}</span></span>`;
+    fr=fr.replace(`‹${slot}›`, chip);
+    en=en.replace(`‹${slot}›`, val);
+  });
+  
+  const sentEl=document.getElementById('tmpl-sentence');
+  const enEl=document.getElementById('tmpl-en');
+  if(sentEl) sentEl.innerHTML=fr;
+  if(enEl) enEl.textContent=en;
+  
+  const counter=document.getElementById('tmpl-counter');
+  const lbl=t.label||'';
+  if(counter) counter.textContent=(tmplIdx+1)+' / '+tmps.length+(lbl?' — '+lbl:'');
+  
+  // Wire slot click handlers — now opens drawer instead of cycling
+  if(sentEl){
+    sentEl.querySelectorAll('.tmpl-slot').forEach(chip=>{
+      chip.addEventListener('click',function(e){
+        e.stopPropagation();
+        const slot=this.dataset.slot;
+        if(openSlot===slot){
+          // Close if already open
+          openSlot=null;
+          document.getElementById('tmpl-opts-drawer').innerHTML='';
+          this.classList.remove('open');
+        } else {
+          // Close previous
+          sentEl.querySelectorAll('.tmpl-slot.open').forEach(c=>c.classList.remove('open'));
+          openSlot=slot;
+          this.classList.add('open');
+          renderSlotDrawer(slot);
+        }
+      });
+    });
+  }
+}
+
+function renderSlotDrawer(slot){
+  const tmps=getTaskTemplates();
+  const t=tmps[tmplIdx];
+  if(!t||!t.slots[slot]) return;
+  const opts=t.slots[slot];
+  const currentIdx=tmplSlotIndices[slot]||0;
+  const drawer=document.getElementById('tmpl-opts-drawer');
+  if(!drawer) return;
+  
+  // Build drawer HTML
+  let rows=opts.map((opt,i)=>`
+    <div class="tmpl-opt-row${i===currentIdx?' active':''}" data-slot="${slot}" data-optidx="${i}">
+      <span class="tmpl-opt-num">${i+1}</span>
+      <span class="tmpl-opt-fr">${opt}</span>
+      <button class="tmpl-opt-speak" data-text="${opt.replace(/"/g,'&quot;')}" title="Speak">🔊</button>
+    </div>
+  `).join('');
+  
+  drawer.innerHTML=`
+    <div class="tmpl-opts-drawer">
+      <div class="tmpl-opts-header">
+        <b>${slot.replace(/_/g,' ')}</b>
+        <span style="opacity:0.6">${opts.length} options — tap to select</span>
+        <button class="tmpl-opts-speak" id="tmpl-opts-speak-all">▶ Speak all</button>
+      </div>
+      ${rows}
+    </div>
+  `;
+  
+  // Wire row clicks — select option
+  drawer.querySelectorAll('.tmpl-opt-row').forEach(row=>{
+    row.addEventListener('click',function(e){
+      if(e.target.classList.contains('tmpl-opt-speak')) return;
+      const s=this.dataset.slot;
+      const i=parseInt(this.dataset.optidx);
+      tmplSlotIndices[s]=i;
+      openSlot=s; // keep drawer open
+      renderTemplate();
+      // Re-mark the chip as open and re-render drawer
+      const sentEl=document.getElementById('tmpl-sentence');
+      if(sentEl){
+        const chips=sentEl.querySelectorAll('.tmpl-slot');
+        chips.forEach(c=>{ if(c.dataset.slot===s){ c.classList.add('open'); } });
+      }
+      renderSlotDrawer(s);
+    });
+  });
+  
+  // Wire individual speak buttons
+  drawer.querySelectorAll('.tmpl-opt-speak').forEach(btn=>{
+    btn.addEventListener('click',function(e){
+      e.stopPropagation();
+      const text=this.dataset.text;
+      speakFr(text);
+    });
+  });
+  
+  // Speak all options sequentially
+  drawer.getElementById&&null; // no-op
+  const speakAll=document.getElementById('tmpl-opts-speak-all');
+  if(speakAll){
+    speakAll.addEventListener('click',function(){
+      speakOptionsSequentially(opts,0);
+    });
+  }
+}
+
+function speakOptionsSequentially(opts,i){
+  if(i>=opts.length) return;
+  window.speechSynthesis.cancel();
+  // Speak number then option
+  const numUtter=new SpeechSynthesisUtterance((i+1).toString());
+  numUtter.lang='fr-FR';
+  numUtter.rate=0.9;
+  numUtter.onend=function(){
+    const u=new SpeechSynthesisUtterance(opts[i]);
+    u.voice=getFrVoice();
+    u.lang='fr-FR';
+    u.rate=parseFloat(document.getElementById('sspd').value)||0.85;
+    u.onend=function(){ setTimeout(()=>speakOptionsSequentially(opts,i+1),400); };
+    window.speechSynthesis.speak(u);
+  };
+  window.speechSynthesis.speak(numUtter);
+}
+
+function speakFr(text){
+  window.speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text);
+  u.voice=getFrVoice();
+  u.lang='fr-FR';
+  u.rate=parseFloat(document.getElementById('sspd').value)||0.85;
+  window.speechSynthesis.speak(u);
+}
+
+// ── Template Play & Autoplay ─────────────────────────────────────────────────
+var tmplAutoplayActive=false;
+var tmplAutoplayTimer=null;
+var tmplAutoplayDelay=4000; // ms between templates
+
+function tmplPlay(){
+  // Speaks full sentence, then advances to next template
+  const sentEl=document.getElementById('tmpl-sentence');
+  if(!sentEl) return;
+  const text=sentEl.textContent.replace(/\d+\/\d+/g,'').trim();
+  window.speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text);
+  u.voice=getFrVoice();
+  u.lang='fr-FR';
+  u.rate=parseFloat(document.getElementById('sspd').value)||0.85;
+  window.speechSynthesis.speak(u);
+}
+
+function tmplAutoNext(){
+  const tmps=getTaskTemplates();
+  if(!tmps||!tmps.length) return;
+  tmplIdx=(tmplIdx+1)%tmps.length;
+  tmplSlotIndices={};
+  renderTemplate();
+}
+
+// Translation cache for autoplay EN sentences
+var tmplTranslationCache={};
+
+function translateFrSentence(fr,cb){
+  if(tmplTranslationCache[fr]){cb(tmplTranslationCache[fr]);return;}
+  _myTranslate(fr,function(en){tmplTranslationCache[fr]=en;cb(en);});
+}
+
+function autoplayDrillQueue(queue, i, onDone){
+  if(!tmplAutoplayActive){ onDone&&onDone(); return; }
+  if(i>=queue.length){ onDone&&onDone(); return; }
+  const item=queue[i];
+
+  if(item.text==='---gap---'){
+    tmplAutoplayTimer=setTimeout(()=>autoplayDrillQueue(queue,i+1,onDone), item.pause);
+    return;
+  }
+  if(item.text==='---update---'){
+    // Sync all slots to this option index so the display updates
+    const tmps=getTaskTemplates();
+    const t=tmps[tmplIdx];
+    if(t) Object.keys(t.slots).forEach(k=>{ tmplSlotIndices[k]=item.optIdx; });
+    renderTemplate();
+    // Also pre-fill the EN element with this variation's translation
+    const enEl=document.getElementById('tmpl-en');
+    if(enEl && item.enText) enEl.textContent=item.enText;
+    autoplayDrillQueue(queue,i+1,onDone);
+    return;
+  }
+
+  const u=new SpeechSynthesisUtterance(item.text);
+  const isFr=!item.lang||item.lang==='fr';
+  if(isFr){
+    u.voice=getFrVoice(); u.lang='fr-FR';
+    const enEl=document.getElementById('tmpl-en');
+    if(enEl) enEl.classList.remove('speaking-en');
+    // Pre-fetch translation for the upcoming EN item while FR is playing
+    if(item.frText) translateFrSentence(item.frText, en=>{
+      tmplTranslationCache[item.frText]=en;
+      const enEl2=document.getElementById('tmpl-en');
+      if(enEl2) enEl2.textContent=en;
+    });
+  } else {
+    // Fetch translation, update display, then speak
+    const frSource=item.frSource||item.text;
+    const speakEn=(enText)=>{
+      const enEl=document.getElementById('tmpl-en');
+      if(enEl){ enEl.textContent=enText; enEl.classList.add('speaking-en'); }
+      const eu=new SpeechSynthesisUtterance(enText);
+      eu.voice=getEnVoice(); eu.lang='en-US';
+      eu.rate=parseFloat(document.getElementById('sspd').value)||0.85;
+      let ended=false;
+      const advance=()=>{ if(ended)return;ended=true; if(!tmplAutoplayActive){onDone&&onDone();return;} tmplAutoplayTimer=setTimeout(()=>autoplayDrillQueue(queue,i+1,onDone),item.pause||300); };
+      const estMs=Math.max(1500,(enText.length/5)*1000/(eu.rate||0.85))+500;
+      const fallback=setTimeout(advance,estMs);
+      eu.onend=()=>{clearTimeout(fallback);advance();};
+      window.speechSynthesis.speak(eu);
+    };
+    if(tmplTranslationCache[frSource]){
+      speakEn(tmplTranslationCache[frSource]);
+    } else {
+      translateFrSentence(frSource, speakEn);
+    }
+    return; // speakEn handles advancing
+  }
+  u.rate=parseFloat(document.getElementById('sspd').value)||0.85;
+  // Use a fallback timer in case onend doesn't fire (Safari/iOS quirk)
+  let ended=false;
+  const advance=()=>{
+    if(ended) return; ended=true;
+    if(!tmplAutoplayActive){ onDone&&onDone(); return; }
+    tmplAutoplayTimer=setTimeout(()=>autoplayDrillQueue(queue,i+1,onDone), item.pause||300);
+  };
+  u.onend=advance;
+  // Fallback: estimate duration from text length + rate, add buffer
+  const estMs=Math.max(1500, (item.text.length/5)*1000/(u.rate||0.85))+500;
+  const fallback=setTimeout(advance, estMs);
+  u.onend=()=>{ clearTimeout(fallback); advance(); };
+  window.speechSynthesis.speak(u);
+}
+
+function tmplAutoplayCycle(){
+  if(!tmplAutoplayActive) return;
+  window.speechSynthesis.cancel(); // clear anything playing before starting fresh
+  const tmps=getTaskTemplates();
+  const t=tmps[tmplIdx];
+  if(!t) return;
+
+  // All slots step in lockstep — use shortest slot length
+  const slotKeys=Object.keys(t.slots);
+  const numOpts=Math.min(...slotKeys.map(k=>t.slots[k].length));
+
+  // Build queue: for each option index i:
+  //   ---update--- (sync display)
+  //   FR sentence  (speak French)
+  //   ---en---     (speak English translation)
+  //   gap
+  const queue=[];
+  for(let i=0;i<numOpts;i++){
+    let frSentence=t.fr;
+    let enSentence=t.en;
+    slotKeys.forEach(k=>{
+      const val=t.slots[k][i]||t.slots[k][0];
+      frSentence=frSentence.replace(`‹${k}›`, val);
+      enSentence=enSentence.replace(`‹${k}›`, val);
+    });
+    frSentence=frSentence.replace(/‹[^›]+›/g,'');
+    enSentence=enSentence.replace(/‹[^›]+›/g,'');
+
+    queue.push({text:'---update---', optIdx:i, frText:frSentence, enText:enSentence, pause:0});
+    queue.push({text:frSentence, lang:'fr', frText:frSentence, pause:500});
+    queue.push({text:enSentence, lang:'en', frSource:frSentence, pause:900});
+  }
+  // Gap before advancing to next template
+  queue.push({text:'---gap---', pause:1200});
+
+  autoplayDrillQueue(queue, 0, ()=>{
+    if(!tmplAutoplayActive) return;
+    tmplAutoNext();
+    setTimeout(tmplAutoplayCycle, 400);
+  });
+}
+
+function tmplToggleAutoplay(){
+  tmplAutoplayActive=!tmplAutoplayActive;
+  const btn=document.getElementById('tmpl-autoplay');
+  if(tmplAutoplayActive){
+    if(btn){ btn.textContent='⏹ Stop'; btn.classList.add('active'); }
+    tmplAutoplayCycle();
+  } else {
+    if(btn){ btn.textContent='⏩ Auto'; btn.classList.remove('active'); }
+    window.speechSynthesis.cancel();
+    clearTimeout(tmplAutoplayTimer);
+    const enEl=document.getElementById('tmpl-en');
+    if(enEl) enEl.classList.remove('speaking-en');
+  }
+}
+
+function tmplDrill(){
+  const tmps=getTaskTemplates();
+  const t=tmps[tmplIdx];
+  if(!t) return;
+  const sentEl=document.getElementById('tmpl-sentence');
+  const fullText=sentEl?sentEl.textContent.replace(/\d+\/\d+/g,'').trim():'';
+  // Parse slot order from template fr string
+  const slotOrder=[];const seen=new Set();
+  const matches=[...t.fr.matchAll(/‹([A-Z0-9_]+)›/g)];
+  matches.forEach(m=>{ if(!seen.has(m[1])){ seen.add(m[1]); slotOrder.push(m[1]); } });
+  const queue=[];
+  queue.push({text:fullText,pause:700});
+  slotOrder.forEach(slot=>{
+    const opts=t.slots[slot];
+    if(!opts) return;
+    queue.push({text:'---gap---',pause:400});
+    opts.forEach((opt,i)=>{ queue.push({text:(i+1)+'. '+opt,pause:380}); });
+  });
+  drillQueue(queue,0);
+}
+
+function drillQueue(queue,i){
+  if(i>=queue.length) return;
+  const item=queue[i];
+  if(item.text==='---gap---'){ setTimeout(()=>drillQueue(queue,i+1),item.pause); return; }
+  window.speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(item.text);
+  u.voice=getFrVoice();u.lang='fr-FR';
+  u.rate=parseFloat(document.getElementById('sspd').value)||0.85;
+  u.onend=function(){ setTimeout(()=>drillQueue(queue,i+1),item.pause||300); };
+  window.speechSynthesis.speak(u);
+}
+
+function speakFr(text){
+  window.speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text);
+  u.voice=getFrVoice();u.lang='fr-FR';
+  u.rate=parseFloat(document.getElementById('sspd').value)||0.85;
+  window.speechSynthesis.speak(u);
+}
+
+function tmplSpeak(){
+  const sentEl=document.getElementById('tmpl-sentence');
+  if(!sentEl) return;
+  const text=sentEl.textContent.replace(/\d+\/\d+/g,'').trim();
+  const u=new SpeechSynthesisUtterance(text);
+  u.voice=getFrVoice();
+  u.lang='fr-FR';
+  u.rate=parseFloat(document.getElementById('sspd').value);
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(u);
+}
+
+function initTemplateMode(){
+  const btn=document.getElementById('tmpl-btn');
+  if(btn) btn.addEventListener('click',()=>{
+    tmplVisible=!tmplVisible;
+    tmplSlotIndices={};
+    const panel=document.getElementById('tmpl-panel');
+    if(panel) panel.classList.toggle('visible',tmplVisible);
+    btn.classList.toggle('active',tmplVisible);
+    if(tmplVisible){ renderTemplate(); }
+  });
+  
+  const prev=document.getElementById('tmpl-prev');
+  const next=document.getElementById('tmpl-next');
+  const shuffle=document.getElementById('tmpl-shuffle');
+  const speak=document.getElementById('tmpl-speak');
+  
+  if(prev) prev.addEventListener('click',()=>{
+    const tmps=getTaskTemplates();
+    tmplIdx=(tmplIdx-1+tmps.length)%tmps.length;
+    tmplSlotIndices={};
+    renderTemplate();
+  });
+  if(next) next.addEventListener('click',()=>{
+    const tmps=getTaskTemplates();
+    tmplIdx=(tmplIdx+1)%tmps.length;
+    tmplSlotIndices={};
+    renderTemplate();
+  });
+  if(shuffle) shuffle.addEventListener('click',()=>{
+    const tmps=getTaskTemplates();
+    const t=tmps[tmplIdx];
+    if(!t) return;
+    Object.entries(t.slots).forEach(([k,opts])=>{
+      tmplSlotIndices[k]=Math.floor(Math.random()*opts.length);
+    });
+    renderTemplate();
+  });
+  if(speak) speak.addEventListener('click', tmplSpeak);
+  const drill=document.getElementById('tmpl-drill');
+  if(drill) drill.addEventListener('click', tmplDrill);
+  const play=document.getElementById('tmpl-play');
+  if(play) play.addEventListener('click', tmplPlay);
+  const autoBtn=document.getElementById('tmpl-autoplay');
+  if(autoBtn) autoBtn.addEventListener('click', tmplToggleAutoplay);
+}
+
+initEQControls();
+initBlindMode();
+
+
+
+// ═══════════════════════════════════════════════════════════════════════
+// TEMPLATE SCREEN — full standalone player for STEP_TEMPLATES
+// ═══════════════════════════════════════════════════════════════════════
+
+
+
+
+// ═══════════════════════════════════════════════════════════════════════
+// TEMPLATE SCREEN — mirrors the main player exactly, step-based not topic-based
+// ═══════════════════════════════════════════════════════════════════════
+
+var tsIdx=0, tsSlotIndices={}, tsTask='e1', tsStep=0;
+var tsAutoActive=false, tsAutoTimer=null, tsOpenSlot=null;
+var tsTransCache={};
+var tsLang='both';
+
+const TS_STEP_LABELS={
+  e1:{0:'Objet/Sujet',1:'Salutation',2:"Raison d'écrire",3:'Description',4:'Demande pratique',5:'Clôture chaleureuse',6:'Formule de politesse',7:'Signature'},
+  e2:{0:'Titre/En-tête',1:'Introduire le débat',2:'Premier argument',3:'Concession',4:'Position personnelle',5:'Nuance',6:'Conclusion',7:'Signature blog'},
+  e3:{0:'Titre',1:'Ouverture formelle',2:'Premier argument',3:'Concession maître',4:'Condition C1',5:'Réflexion profonde',6:'Conclusion philosophique',7:'Signature journalistique'},
+  o1:{0:'Lancer/inviter',1:'Développer et convaincre',2:'Gérer hésitation',3:'Conclure et confirmer'},
+  o2:{0:'Ouverture formelle',1:'Questions sur le contenu',2:'Questions pratiques',3:'Question de suivi',4:'Conclusion'},
+  o3:{0:'Ouverture forte',1:'Premier argument',2:'Concession maître',3:'Nuance et condition C1',4:'Conclusion philosophique'}
+};
+
+// ── Build template task cards on home screen (mirrors buildCards) ───────────
+function buildTemplateCards(){
+  const grid=document.getElementById('grid-templates');
+  if(!grid) return;
+  grid.innerHTML='';
+  TASK_META.forEach(function(m){
+    const stepCount=Object.keys(STEP_TEMPLATES[m.key]||{}).length;
+    const tmplCount=Object.values(STEP_TEMPLATES[m.key]||{}).reduce((a,t)=>a+t.length,0);
+    const c=document.createElement('div');
+    c.className='tcard';
+    c.innerHTML=
+      '<div class="tcard-stripe" style="background:'+m.color+'"></div>'+
+      '<div class="tcard-short">'+m.short+'</div>'+
+      '<div class="tcard-label">'+m.label+'</div>'+
+      '<div class="tcard-desc">Templates de phrases — '+stepCount+' étapes</div>'+
+      '<div class="tcard-badges"><span class="tbadge">'+tmplCount+' templates</span><span class="tbadge">'+m.reg+'</span></div>';
+    c.addEventListener('click',function(){ openTmplScreen(m.key,0); });
+    grid.appendChild(c);
+  });
+}
+
+// ── Helpers ──────────────────────────────────────────────────────────────────
+function tsT(){ return (STEP_TEMPLATES[tsTask]||{})[tsStep]||[]; }
+function tsSpd(){ return parseFloat((document.getElementById('ts-spd')||{}).value||0.85); }
+function tsRep(){ return parseInt((document.getElementById('ts-rep')||{}).value||1); }
+function tsVolFr(){ return parseFloat((document.getElementById('ts-vol-fr')||{}).value||1); }
+function tsVolEn(){ return parseFloat((document.getElementById('ts-vol-en')||{}).value||1); }
+function tsVolAll(){ return parseFloat((document.getElementById('ts-vol-all')||{}).value||1); }
+
+function tsVoiceFr(){
+  const sel=document.getElementById('ts-pfr');
+  const name=sel&&sel.value;
+  return speechSynthesis.getVoices().find(v=>v.name===name)||getFrVoice();
+}
+function tsVoiceEn(){
+  const sel=document.getElementById('ts-pen');
+  const name=sel&&sel.value;
+  return speechSynthesis.getVoices().find(v=>v.name===name)||getEnVoice();
+}
+
+function tsSay(text, lang, onDone){
+  if(!text||!text.trim()){ onDone&&onDone(); return; }
+  const voices=speechSynthesis.getVoices();
+  if(!voices.length){
+    speechSynthesis.addEventListener('voiceschanged',()=>tsSay(text,lang,onDone),{once:true});
+    return;
+  }
+  try{ if(speechSynthesis.paused) speechSynthesis.resume(); }catch(e){}
+  const u=new SpeechSynthesisUtterance(text);
+  const isFr=lang==='fr';
+  const voice=isFr?tsVoiceFr():tsVoiceEn();
+  if(voice) u.voice=voice;
+  u.lang=isFr?'fr-FR':'en-US';
+  u.rate=tsSpd();
+  u.volume=Math.min(1,(isFr?tsVolFr():tsVolEn())*tsVolAll());
+  let done=false;
+  const finish=()=>{ if(done)return; done=true; onDone&&onDone(); };
+  const est=Math.max(2000,(text.length/4)*1000/Math.max(0.3,u.rate))+800;
+  const fb=setTimeout(finish,est);
+  u.onend=()=>{ clearTimeout(fb); finish(); };
+  u.onerror=()=>{ clearTimeout(fb); finish(); };
+  try{ window.speechSynthesis.speak(u); }
+  catch(e){ clearTimeout(fb); finish(); }
+}
+
+function tsTranslate(fr,cb){
+  if(!fr){cb('');return;}
+  if(tsTransCache[fr]){cb(tsTransCache[fr]);return;}
+  _myTranslate(fr,function(en){tsTransCache[fr]=en;cb(en);});
+}
+
+// ── Render current template ───────────────────────────────────────────────
+function tsRender(){
+  const tmps=tsT();
+  if(!tmps.length){ tsIdx=0; return; }
+  if(tsIdx>=tmps.length) tsIdx=0;
+  const t=tmps[tsIdx];
+
+  tsOpenSlot=null;
+  const drawer=document.getElementById('ts-opts-drawer');
+  if(drawer) drawer.innerHTML='';
+
+  Object.keys(t.slots).forEach(k=>{ if(tsSlotIndices[k]===undefined) tsSlotIndices[k]=0; });
+
+  let fr=t.fr;
+  Object.entries(t.slots).forEach(([slot,opts])=>{
+    const i=tsSlotIndices[slot]%opts.length;
+    const val=opts[i];
+    fr=fr.replace(`‹${slot}›`,
+      `<span class="tmpl-slot ts-chip" data-slot="${slot}">${val}<span class="tmpl-slot-idx">${i+1}/${opts.length}</span></span>`);
+  });
+
+  const frEl=document.getElementById('ts-fr');
+  const enEl=document.getElementById('ts-en');
+  const showFr=tsLang!=='en';
+  const showEn=tsLang!=='fr';
+  if(frEl){ frEl.innerHTML=fr; frEl.style.display=showFr?'':'none'; }
+  if(enEl){ enEl.textContent='…'; enEl.style.display=showEn?'':'none'; }
+
+  if(frEl) frEl.querySelectorAll('.ts-chip').forEach(chip=>{
+    chip.addEventListener('click',function(e){
+      e.stopPropagation();
+      const slot=this.dataset.slot;
+      if(tsOpenSlot===slot){
+        tsOpenSlot=null;
+        if(drawer) drawer.innerHTML='';
+        this.classList.remove('open');
+      } else {
+        frEl.querySelectorAll('.ts-chip.open').forEach(c=>c.classList.remove('open'));
+        tsOpenSlot=slot; this.classList.add('open');
+        tsDrawer(slot);
+      }
+    });
+  });
+
+  if(showEn){
+    const frText=frEl?frEl.textContent.replace(/\d+\/\d+/g,'').trim():'';
+    tsTranslate(frText, en=>{ if(enEl) enEl.textContent=en; });
+  }
+
+  tsDots();
+  tsUpdateMeta();
+}
+
+function tsUpdateMeta(){
+  const tmps=tsT();
+  const sname=document.getElementById('ts-sname');
+  const repb=document.getElementById('ts-repb');
+  const stepCountEl=document.getElementById('ts-step-count');
+  const lbl=(TS_STEP_LABELS[tsTask]||{})[tsStep]||('Étape '+tsStep);
+  if(sname) sname.textContent=lbl;
+  if(repb) repb.textContent='Template '+(tsIdx+1)+'/'+tmps.length;
+  if(stepCountEl) stepCountEl.textContent=tmps.length+' templates';
+}
+
+function tsDrawer(slot){
+  const t=tsT()[tsIdx]; if(!t) return;
+  const opts=t.slots[slot]; if(!opts) return;
+  const cur=tsSlotIndices[slot]%opts.length;
+  const drawer=document.getElementById('ts-opts-drawer');
+  if(!drawer) return;
+
+  drawer.innerHTML=`<div class="tmpl-opts-drawer">
+    <div class="tmpl-opts-header">
+      <b>${slot.replace(/_/g,' ')}</b>
+      <span style="opacity:.6">${opts.length} options</span>
+      <button class="tmpl-opts-speak" id="ts-speak-all">▶ Speak all</button>
+    </div>
+    ${opts.map((o,i)=>`
+      <div class="tmpl-opt-row${i===cur?' active':''}" data-slot="${slot}" data-i="${i}">
+        <span class="tmpl-opt-num">${i+1}</span>
+        <span class="tmpl-opt-fr">${o}</span>
+        <button class="tmpl-opt-speak" data-text="${o.replace(/"/g,'&quot;')}">🔊</button>
+      </div>`).join('')}
+  </div>`;
+
+  drawer.querySelectorAll('.tmpl-opt-row').forEach(row=>{
+    row.addEventListener('click',function(e){
+      if(e.target.classList.contains('tmpl-opt-speak')) return;
+      tsSlotIndices[this.dataset.slot]=parseInt(this.dataset.i);
+      tsOpenSlot=slot; tsRender();
+      const frEl=document.getElementById('ts-fr');
+      if(frEl) frEl.querySelectorAll('.ts-chip').forEach(c=>{ if(c.dataset.slot===slot) c.classList.add('open'); });
+      tsDrawer(slot);
+    });
+  });
+  drawer.querySelectorAll('.tmpl-opt-speak').forEach(btn=>{
+    btn.addEventListener('click',function(e){
+      e.stopPropagation();
+      window.speechSynthesis.cancel();
+      tsSay(this.dataset.text,'fr');
+    });
+  });
+  const sa=document.getElementById('ts-speak-all');
+  if(sa) sa.addEventListener('click',()=>tsSpeakOptsSeq(opts,0));
+}
+
+function tsSpeakOptsSeq(opts,i){
+  if(i>=opts.length) return;
+  window.speechSynthesis.cancel();
+  const num=new SpeechSynthesisUtterance(String(i+1));
+  num.lang='fr-FR'; num.rate=0.9;
+  num.onend=()=>tsSay(opts[i],'fr',()=>setTimeout(()=>tsSpeakOptsSeq(opts,i+1),400));
+  window.speechSynthesis.speak(num);
+}
+
+function tsDots(){
+  const tmps=tsT();
+  const dotrow=document.getElementById('ts-dots');
+  const pnum=document.getElementById('ts-pnum');
+  const navc=document.getElementById('ts-navc');
+  if(dotrow){
+    dotrow.innerHTML=tmps.map((_,i)=>`<span class="dot${i===tsIdx?' active':''}" data-i="${i}"></span>`).join('');
+    dotrow.querySelectorAll('.dot').forEach(d=>d.addEventListener('click',function(){
+      tsIdx=parseInt(this.dataset.i); tsSlotIndices={}; tsRender();
+    }));
+  }
+  if(pnum) pnum.textContent=`${tsIdx+1} / ${tmps.length}`;
+  const lbl=(TS_STEP_LABELS[tsTask]||{})[tsStep]||'Étape '+tsStep;
+  if(navc) navc.textContent=`${tsIdx+1}/${tmps.length} — ${lbl}`;
+}
+
+// ── Play current (respects language mode + repeat) ──────────────────────────
+function tsPlayCurrent(){
+  const frEl=document.getElementById('ts-fr');
+  const enEl=document.getElementById('ts-en');
+  if(!frEl) return;
+  const frText=frEl.textContent.replace(/\d+\/\d+/g,'').trim();
+  if(!frText) return;
+  const rep=tsRep();
+  window.speechSynthesis.cancel();
+
+  function speakOnce(n,done){
+    if(!n){ done&&done(); return; }
+    if(tsLang==='en'){
+      const enText=enEl?enEl.textContent:'';
+      if(!enText||enText==='…'){ tsTranslate(frText,en=>{ if(enEl)enEl.textContent=en; tsSay(en,'en',()=>setTimeout(()=>speakOnce(n-1,done),400)); }); }
+      else tsSay(enText,'en',()=>setTimeout(()=>speakOnce(n-1,done),400));
+      return;
+    }
+    tsSay(frText,'fr',()=>{
+      if(tsLang==='fr'){ setTimeout(()=>speakOnce(n-1,done),400); return; }
+      setTimeout(()=>{
+        const enText=enEl?enEl.textContent:'';
+        const goEn=(en)=>{
+          if(enEl) enEl.classList.add('speaking-en');
+          tsSay(en,'en',()=>{ if(enEl) enEl.classList.remove('speaking-en'); setTimeout(()=>speakOnce(n-1,done),400); });
+        };
+        if(!enText||enText==='…') tsTranslate(frText,en=>{ if(enEl)enEl.textContent=en; goEn(en); });
+        else goEn(enText);
+      },500);
+    });
+  }
+  speakOnce(rep);
+}
+
+// ── Autoplay — cycles all option combos lockstep, FR→EN per variation, across all templates ─
+function tsAutoplayCycle(){
+  if(!tsAutoActive) return;
+  window.speechSynthesis.cancel();
+  const tmps=tsT();
+  const t=tmps[tsIdx];
+  if(!t){ tsAutoStop(); return; }
+
+  const slotKeys=Object.keys(t.slots);
+  const numOpts=Math.min(...slotKeys.map(k=>t.slots[k].length));
+
+  const pairs=[];
+  for(let i=0;i<numOpts;i++){
+    let fr=t.fr;
+    slotKeys.forEach(k=>{ fr=fr.replace(`‹${k}›`,t.slots[k][i]||t.slots[k][0]); });
+    fr=fr.replace(/‹[^›]+›/g,'').trim();
+    pairs.push({fr,optIdx:i});
+  }
+
+  if(tsLang==='fr'){
+    tsRunPairsFrOnly(pairs,0,slotKeys);
+    return;
+  }
+
+  let fetched=0;
+  const enMap={};
+  pairs.forEach(({fr})=>{
+    tsTranslate(fr,en=>{ enMap[fr]=en; if(++fetched===pairs.length) tsRunPairs(pairs,enMap,0,slotKeys); });
+  });
+}
+
+function tsRunPairsFrOnly(pairs,i,slotKeys){
+  if(!tsAutoActive) return;
+  if(i>=pairs.length){
+    tsAutoTimer=setTimeout(()=>{
+      if(!tsAutoActive) return;
+      const tmps=tsT(); tsIdx=(tsIdx+1)%tmps.length; tsSlotIndices={}; tsRender();
+      setTimeout(tsAutoplayCycle,400);
+    },1000);
+    return;
+  }
+  const {fr,optIdx}=pairs[i];
+  const tmps=tsT(); const t=tmps[tsIdx];
+  if(t) slotKeys.forEach(k=>{ tsSlotIndices[k]=optIdx; });
+  tsRender();
+  tsSay(fr,'fr',()=>{
+    if(!tsAutoActive) return;
+    tsAutoTimer=setTimeout(()=>tsRunPairsFrOnly(pairs,i+1,slotKeys),700);
+  });
+}
+
+function tsRunPairs(pairs,enMap,i,slotKeys){
+  if(!tsAutoActive) return;
+  if(i>=pairs.length){
+    tsAutoTimer=setTimeout(()=>{
+      if(!tsAutoActive) return;
+      const tmps=tsT(); tsIdx=(tsIdx+1)%tmps.length; tsSlotIndices={}; tsRender();
+      setTimeout(tsAutoplayCycle,400);
+    },1000);
+    return;
+  }
+  const {fr,optIdx}=pairs[i];
+  const en=enMap[fr]||fr;
+
+  const tmps=tsT(); const t=tmps[tsIdx];
+  if(t) slotKeys.forEach(k=>{ tsSlotIndices[k]=optIdx; });
+  tsRender();
+  const enEl=document.getElementById('ts-en');
+  if(enEl) enEl.textContent=en;
+
+  tsSay(fr,'fr',()=>{
+    if(!tsAutoActive) return;
+    setTimeout(()=>{
+      if(!tsAutoActive) return;
+      if(enEl) enEl.classList.add('speaking-en');
+      tsSay(en,'en',()=>{
+        if(enEl) enEl.classList.remove('speaking-en');
+        if(!tsAutoActive) return;
+        tsAutoTimer=setTimeout(()=>tsRunPairs(pairs,enMap,i+1,slotKeys),900);
+      });
+    },500);
+  });
+}
+
+function tsAutoStop(){
+  tsAutoActive=false;
+  clearTimeout(tsAutoTimer);
+  window.speechSynthesis.cancel();
+  const btn=document.getElementById('ts-auto');
+  if(btn){
+    btn.classList.remove('play-idle');
+    btn.innerHTML='<svg class="ic" viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg> Auto-play all';
+  }
+  const enEl=document.getElementById('ts-en');
+  if(enEl) enEl.classList.remove('speaking-en');
+}
+
+// ── Step selector ─────────────────────────────────────────────────────────
+function tsPopStep(){
+  const sel=document.getElementById('ts-step');
+  if(!sel) return;
+  const labels=TS_STEP_LABELS[tsTask]||{};
+  sel.innerHTML=Object.keys(STEP_TEMPLATES[tsTask]||{}).map(s=>`<option value="${s}">${labels[s]||'Étape '+s}</option>`).join('');
+  sel.value=String(tsStep);
+  sel.onchange=function(){ tsStep=parseInt(this.value); tsIdx=0; tsSlotIndices={}; tsRender(); };
+}
+
+function tsPopVoices(){
+  const voices=speechSynthesis.getVoices();
+  const frEl=document.getElementById('ts-pfr');
+  const enEl=document.getElementById('ts-pen');
+  if(frEl&&voices.length){
+    const frvs=voices.filter(v=>v.lang.startsWith('fr'));
+    frEl.innerHTML=frvs.map(v=>`<option value="${v.name}">${v.name}</option>`).join('');
+    const best=frvs.find(v=>/Amélie|Aurélie|Marie|Thomas/i.test(v.name))||frvs[0];
+    if(best) frEl.value=best.name;
+  }
+  if(enEl&&voices.length){
+    const envs=voices.filter(v=>v.lang.startsWith('en'));
+    enEl.innerHTML=envs.map(v=>`<option value="${v.name}">${v.name}</option>`).join('');
+    const best=envs.find(v=>/Samantha|Karen|en-GB/i.test(v.name))||envs[0];
+    if(best) enEl.value=best.name;
+  }
+  ['fr','en','all'].forEach(k=>{
+    const sl=document.getElementById('ts-vol-'+k);
+    const pct=document.getElementById('ts-vpct-'+k);
+    if(sl&&pct&&!sl._wired){ sl._wired=true; sl.oninput=()=>{ pct.textContent=Math.round(sl.value*100)+'%'; }; }
+  });
+}
+
+function tsBg(){
+  const colors={e1:'#4FC3F7',e2:'#29B6F6',e3:'#0288D1',o1:'#A259FF',o2:'#FF6AC1',o3:'#00F0C0'};
+  const bg=document.getElementById('ts-sbg');
+  if(bg) bg.style.background=`radial-gradient(ellipse at 50% 0%,${colors[tsTask]||'#4FC3F7'}33 0%,#0a0a12 70%)`;
+}
+
+// ── Open / close ──────────────────────────────────────────────────────────
+function openTmplScreen(taskKey,stepIdx){
+  tsAutoStop();
+  tsTask=taskKey||'e1';
+  tsStep=stepIdx!==undefined?parseInt(stepIdx):0;
+  tsIdx=0; tsSlotIndices={};
+
+  const home=document.getElementById('home-screen');
+  const player=document.getElementById('player-screen');
+  if(home) home.style.display='none';
+  if(player) player.style.display='none';
+  const ts=document.getElementById('tmpl-screen');
+  if(ts) ts.style.display='block';
+  window.scrollTo(0,0);
+
+  const meta=TASK_META.find(m=>m.key===tsTask)||{};
+  const t1=document.getElementById('ts-t1');
+  const t2=document.getElementById('ts-t2');
+  const reg=document.getElementById('ts-reg');
+  const timing=document.getElementById('ts-timing');
+  if(t1) t1.textContent=(meta.label||tsTask)+' — Templates';
+  if(t2) t2.textContent=meta.desc||'';
+  if(reg) reg.textContent=meta.reg||'—';
+  if(timing) timing.textContent='📐 Sentence builder';
+
+  tsBg();
+  tsPopStep();
+  tsPopVoices();
+  tsRender();
+}
+
+function closeTmplScreen(){
+  tsAutoStop();
+  const ts=document.getElementById('tmpl-screen');
+  if(ts) ts.style.display='none';
+  const home=document.getElementById('home-screen');
+  if(home) home.style.display='block';
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────
+var _tsScreenWired=false;
+function initTmplScreen(){
+  if(_tsScreenWired) return;
+  _tsScreenWired=true;
+  function on(id,ev,fn){ const el=document.getElementById(id); if(el) el.addEventListener(ev,fn); }
+
+  on('ts-back','click',closeTmplScreen);
+  on('ts-prev','click',()=>{ const tmps=tsT(); tsIdx=(tsIdx-1+tmps.length)%tmps.length; tsSlotIndices={}; tsRender(); });
+  on('ts-next','click',()=>{ tsIdx=(tsIdx+1)%tsT().length; tsSlotIndices={}; tsRender(); });
+  on('ts-play','click',tsPlayCurrent);
+  on('ts-stop','click',()=>{ window.speechSynthesis.cancel(); tsAutoStop(); });
+  on('ts-auto','click',function(){
+    if(tsAutoActive){ tsAutoStop(); }
+    else {
+      tsAutoActive=true;
+      this.classList.add('play-idle');
+      this.innerHTML='<svg class="ic" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" fill="currentColor" stroke="none"/></svg> Stop auto';
+      tsAutoplayCycle();
+    }
+  });
+  on('ts-lang','change',function(){ tsLang=this.value; tsRender(); });
+  const langSel=document.getElementById('ts-lang');
+  if(langSel) langSel.addEventListener('change',function(){ tsLang=this.value; tsRender(); });
+  on('ts-blsw','click',()=>{
+    const sel=document.getElementById('ts-lang');
+    if(!sel) return;
+    sel.value = sel.value==='fr'?'en':sel.value==='en'?'fr':'fr';
+    tsLang=sel.value; tsRender();
+  });
+  on('ts-eq-reset','click',()=>{
+    ['ts-eq-high','ts-eq-mid','ts-eq-low'].forEach(id=>{
+      const el=document.getElementById(id); if(el) el.value=0;
+      const val=document.getElementById(id+'-val'); if(val) val.textContent='0';
+    });
+  });
+  ['ts-eq-high','ts-eq-mid','ts-eq-low'].forEach(id=>{
+    on(id,'input',function(){ const v=document.getElementById(id+'-val'); if(v) v.textContent=this.value; });
+  });
+
+  if(speechSynthesis.getVoices().length) tsPopVoices();
+  speechSynthesis.addEventListener('voiceschanged',tsPopVoices);
+}
+
+var _tsInitDone=false;
+function _tsInitOnce(){
+  if(_tsInitDone) return;
+  _tsInitDone=true;
+  initTmplScreen();
+  }
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded',_tsInitOnce);
+} else {
+  _tsInitOnce();
+}
+
+
+
+// ── Async data loader ──────────────────────────────────────────
+(function(){
+  var base=location.href.replace(/\/[^\/]*$/, '/');
+  Promise.all([
+    fetch(base+'data.json').then(function(r){return r.json();}),
+    fetch(base+'templates.json').then(function(r){return r.json();})
+  ])
+    .then(function(results){
+      Object.assign(ALL_DATA, results[0].ALL_DATA);
+      Object.assign(STEP_TEMPLATES, results[1]);
+      buildCards();
+      refreshCards();
+      loadVoices();
+      initWordTooltip();
+      initTemplateMode();
+      buildTemplateCards();
+    })
+    .catch(function(e){
+      document.body.innerHTML='<div style="padding:2rem;color:red">Failed to load data — make sure data.json and templates.json are in the same folder as index.html.<br>'+e+'</div>';
+    });
+})();
+</script>
+
+
+
+
+</body>
+</html>
